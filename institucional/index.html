@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Clinica Dente de Leão</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+
+	<header class="top-nav">
+		<div class="top--log">
+			<p class="name-business">Clinica Dente de Leão</p>
+			<img src="assets/Logo da empresa.png" alt="" width="40px">
+		</div>
+		<input id="menu-toggle" type="checkbox" />
+		<label class="menu-button-container" for="menu-toggle">
+			<div class='menu-button'></div>
+		</label>
+		<div class="modal--content--three">
+
+			<ul class="menu">
+				<li>
+					<a href="#" style="color: black;"><span class="teste">Sobre nós</span></a>
+				</li>
+				<li>
+					<a href="#" style="color: black;">Nosso time</a>
+				</li>
+				<li>
+					<a href="#" style="color: black;"> Serviços</a>
+				</li>
+
+				<li>
+					<a href="#" style="color: black;">Informações do paciente</a>
+				</li>
+				<div class="">
+					<li>
+						<a href="#" onclick="openModalcnt()" id="modal--teste-three" style="color: black;">Contato</a>
+					</li>
+					<div class="modal-content-new" style="text-align: center;">
+						<div id="modal--div-three" class="modal--three">
+							<div class="modal-content-new-three">
+								<span class="close-three"> &times; </span>
+								<div class="title--modal-informations">
+									<h4>Duvidas? Entrem Em<br> Contato Conosco.</h4>
+								</div>
+								<table class="modal--input-three">
+									<form>
+										<tr class="modal--information">
+											<td class="modal--information-one">
+												<label for="idtexto"></label>
+
+												<ul class="text--information-one">
+													<li class="text--information-li">Av. Mateo Bei, 3048 <br><br></li>
+													<li class="text--information-li-one"> (11) 3958-7959<br>
+														(11)99373-7917<br></li>
+													<li class="text--information-li-two">Segunda a Sexta Das 07:00 as
+														18:00<br>Sabados Das 07:00 ás 12:00
+														<br><br>
+													</li>
+													<li class="text--information-li-three">
+														contato@clinicadeleao.com<br><br></li>
+
+												</ul>
+											</td>
+											<td class="o">
+											
+											</td>
+											<td class="modal--information-two">
+
+												<label for="idtexto"></label>
+												<input placeholder="Nome Completo:" type="text" class="modal--name-two"
+													nome="modal--name"><br>
+												<label for="idtexto"></label>
+												<input type="tel" id="telefone" class="modal--phone-two" required
+													placeholder="(xx) xxxxx-xxxx">
+												<label for="email"></label><br>
+
+												<input type="email" id="email" class="modal--email"
+													pattern=".+@globex\.com" size="30" placeholder="Email" required>
+
+												<label for="idtexto" class="text--modal">Mensagem</label>
+												<input type="mensagem" id="mensagem" class="modal--mensagem" required>
+
+
+
+												<input type="submit"
+													onclick="alert('Entraremos em contato em Breve!!!')" value="Enviar"
+													class="modal--submit-three" />
+											</td>
+
+										</tr>
+
+								</table>
+								</form>
+							</div>
+						</div>
+
+					</div>
+
+
+
+
+
+
+
+
+
+					<!-- </div> -->
+
+			</ul>
+		</div>
+
+
+	</header>
+
+
+
+	<!-- __________________________________________________________________________________________________________________________________________________________ -->
+
+	<section>
+		<div class="banner--content">
+			
+			<div class="banner--top-content">
+				<h1 class="banner--top-title">Aproveite Sua<br>Vida Com Um<br>Sorriso No Rosto</h1>
+			</div>
+
+			<div class="banner--subtitle-content">
+				<span>Reserve sua avaliação gratuita para ver como<br>podemos fazer isso acontecer por você!</span>
+			</div>
+			<div class="banner--button">
+				<button class="banner--button-edit">
+					<a href="#" id="modal--teste" style="color: black;">AGENDE SUA AVALIAÇÃO GRATUITA </a>
+				</button>
+				<div id="modal--div" class="modal">
+					<div class="modal-content">
+						<span class="close"> &times; </span>
+						<h1 class="title-modal-avalion">Agende A Sua Avaliação <br> Gratuita</h1>
+						<table class="modal--input">
+							<form>
+								<tr class="modal--justin">
+									<td>
+										<label for="idtexto"></label>
+										<input placeholder="Nome Completo:" type="text" class="modal--name"
+											nome="modal--name" />
+									</td>
+								</tr>
+
+								<tr class="modal--justin-two">
+									<Td>
+										<label for="idtexto"></label>
+										<input type="tel" id="telefone" class="modal--phone" required
+											placeholder="(xx) xxxxx-xxxx">
+									</Td>
+									<td>
+										<label for="iddate"></label>
+										<input placeholder="Idade" type="number" min="0" max="100" maxlength="3"
+											class="modal--year">
+									</td>
+								</tr>
+
+						</table>
+						<input type="submit" onclick="alert('Entraremos em contato em Breve!!!')" value="Enviar"
+							class="modal--submit" />
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="banner--info-bottom">
+				<ul class="banner--list-bottom">
+					<li class="teste--teste">
+						<img class="width--img" src="assets/escova.png" alt="">
+
+						<p class="text--banner">Está com problemas<br> com caries ou dores no<br> dente. Nós estamos<br>
+							aqui por você!<br>
+							Faremos seus dentes<br> ficaram novos como<br> antes :D</p>
+
+					</li>
+					<li class="teste--teste">
+						<img class="width--img" src="assets/escova2.2.png" alt="">
+						<p class="text--banner">A nossa clínica tem os<br> melhores profissionais<br> para extração dos
+							seus<br> dentes e
+							melhores<br> resultados pós-<br>cirúrgicos</p>
+					</li>
+					<li class="teste--teste">
+						<img class="width--img" src="assets/escova3.png" alt="">
+						<p class="text--banner">99% dos pacientes da<br> dente de leão aprovam<br> e recomendam
+							nossos<br> serviços, os outros 1%<br> é vagabundo :P</p>
+					</li>
+					<li class="teste--teste">
+						<img class="width--img" src="assets/escova4.png" alt="">
+						<p class="text--banner">Otimizando a sua<br> saúde bocal com<br> segurança usando<br> técnicas e
+							tecnologias<br> avançadas de<br> diagnóstico, laser e<br> cirurgia.</p>
+					</li>
+					<li class="teste--teste">
+						<img class="width--img" src="assets/escova5.png" alt="">
+						<p class="text--banner">Atenção meticulosa<br> aos detalhes,<br> garantindo que sua<br> saúde
+							bocal esteja<br> protegida.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- __________________________________________________________________________________________________________________________________________________________ -->
+
+
+	<section class="mission--content">
+		<div class="mission--content-center">
+			<div class="mission--title">
+				<!-- <h1 class="mission--title-edit">Nossa Missão - Uma Saúde Bucal Melhor</h1> -->
+			</div>
+			<div class="mission-content-image">
+				<div class="mission--space">
+					<div class="mission--space-content">
+						<div class="mission--space-one">
+							<div class="mission-space-content-one">
+								<div class="conteiner-gif">
+									<img class="gif" src="assets/Group 100.png" alt="" width="230px">
+								</div>
+							</div>
+							<div class="mission-space-content-two">
+								<img class="gif" src="assets/Group 102.png" alt="" width="230px">
+							</div>
+						</div>
+						<div class="mission--space-two">
+							<div class="mission-space-content-three">
+								<img class="gifs" src="assets/Group 101.png" alt="" width="230px">
+							</div>
+							<div class="mission-space-content-four">
+								<img class="gif" src="assets/Group 103.png" alt="" width="230px">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<!-- __________________________________________________________________________________________________________________________________________________________ -->
+
+
+
+	<section class="new--pacient-content">
+		<!-- <img src="assets/Group 110.png" alt="" width="1440px" height="700px"> -->
+		<div class="new--content-center">
+			<div class="new--content-title">
+				<h1 class="new--content-title-edit">Você é um novo paciente?</h1>
+			</div>
+			<div class="new--content--subtitle">
+				<span style="text-align: center; color: #FFF;">
+					Aproveite nossa avaliação bocal gratuita para ver como podemos fazer isso acontecer para você!
+					Durante esta consulta, pretendemos avaliar a sua saúde bocal e determinar o tratamento ou cirurgia
+					mais adequada para o seu sorriso. Você será avaliado por nosso técnico de triagem de odontologia
+					altamente qualificado.
+				</span>
+			</div>
+			<div class="new--content-request">
+				<div class="new-content-request-row-one">
+					<div class="new--request-one">
+						<img src="assets/Group 104.png" alt="" width="150px" height="170px">
+					</div>
+					<div class="new--request-two">
+						<img src="assets/Group 105.png" alt="" width="150px" height="170px">
+					</div>
+					<div class="new--request-three">
+						<img src="assets/Group 106.png" alt="" width="150px" height="170px">
+					</div>
+				</div>
+				<div class="new--content-request-row-two">
+					<div class="new--request-four">
+						<img src="assets/Group 107.png" alt="" width="150px" height="170px">
+					</div>
+					<div class="new--request-five">
+						<img src="assets/Group 108.png" alt="" width="150px" height="170px">
+					</div>
+					<div class="new--request-six">
+						<img src="assets/Group 109.png" alt="" width="150px" height="170px">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- __________________________________________________________________________________________________________________________________________________________ -->
+
+
+	<section class="choose--content">
+
+		<div class="choose--content-center">
+			<div class="choose--content-title">
+				<h1 class="new--content-title-edit--one">Nossos Serviços</h1>
+			</div>
+
+			<div class="choose--new-content-request">
+
+				<div class="new--choose-request-row-one">
+
+					<div class="new--choose-request-one">
+						<img src="assets/icon age.png" alt="" width="70px" height="65px">
+						<p>Clínico Geral - são<br> realizados os<br> tratamentos mais<br> simples, como consultas<br>
+							preventivas, limpezas,<br> remoção de tártaro, entre<br> outros procedimentos.</p>
+					</div>
+
+					<div class="new--choose-request-two">
+						<img src="assets/Group 113.png" alt="" width="70px" height="65px">
+						<p>Implantodontia - Os implantes são utilizados nos casos em que os outros dentes não
+							estão comprometidos, auxiliando na recuperação da mastigação e fala, além de
+							melhorar a estética, trazendo uma maior autoestima ao paciente.
+						</p>
+					</div>
+
+					<div class="new--choose-request-three">
+						<img src="assets/Group 115.png" alt="" width="70px" height="65px">
+						<p>Prótese Dentária<br> - reconstrução e reposição<br> dos dentes danificados ou<br> perdidos. O
+							uso de<br> próteses influencia<br> positivamente a<br> mastigação, dicção e<br> estética do
+							paciente</p>
+					</div>
+
+					<div class="new--choose-request-four">
+						<img src="assets/Group 116.png" alt="" width="70px" height="65px">
+						<p>Dentística - área responsável por proporcionar um sorriso mais harmonioso, com dentes
+							brancos e alinhados. A tecnologia por trás dos procedimentos estéticos já
+							possibilita que esse tipo de tratamento seja acessível a todos.</p>
+					</div>
+
+				</div>
+
+				<div class="new--choose-request-row-two">
+
+
+					<div class="new--choose-request-six">
+						<img src="assets/Group 117.png" alt="" width="70px" height="65px">
+						<p>Odontopediatria - Mesmo<br> durante a dentição de<br> leite, elas já estão<br> suscetíveis a
+							cáries e<br> outros problemas, por<br> isso é preciso visitar um profissional.</p>
+					</div>
+
+					<div class="new--choose-request-seven">
+						<img src="assets/Group 118.png" alt="" width="70px" height="65px">
+						<p>Ortodontia - Por meio do<br> uso de aparelhos<br> dentários, os pacientes de<br> todas as
+							idades podem<br> corrigir o posicionamento<br> dos dentes e ossos faciais,<br> tornando o
+							sorriso mais<br> harmônico e funcional.</p>
+					</div>
+
+					<div class="new--choose-request-eight">
+						<img src="assets/Group 119.png" alt="" width="70px" height="65px">
+						<p>Periodontia - tratamento de<br> tecidos e estruturas de sustentação dos dentes, ou<br> seja,
+							a gengiva e o osso. Os<br> problemas mais comuns<br> tratados por essa<br> especialidade são
+							a<br> gengivite e a periodontite.</p>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+
+	<!-- __________________________________________________________________________________________________________________________________________________________ -->
+
+
+	<section class="doctor--content">
+		<div class="content--center">
+
+			<div class="content--title--name">
+				<h1 class="content--title--name--one">
+					Nosso Time de Especialista
+				</h1>
+			</div>
+
+			<div class="content--row-doctor">
+				<div class="content--doctor-collum-one">
+					<div class="img--simulate"><img src="assets/Doutora D.png" alt=""></div>
+
+				</div>
+				<div class="content--doctor-collum-two">
+
+					<h2 class="content--doctor-edit">
+						Conheça <span class="doctor--name--hans">Dra. Hans Chucrute</span>
+					</h2>
+					<div class="content--width-span">
+						<span class="content--edit-subtitle">
+							A Dra. Hans Chucrute é Cirurgiã Odontologica com treinamento<br> específico e extenso em
+							cirurgia como endodontia, periodontia, prótese<br> dentária e ortodontia.<br> A Dra. Hans
+							Chucrute
+							também está comprometida com o tratamento<br> de remoção de cistos e cirurgia ortognática.
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="content--row-doctors">
+				<div class="content--doctor-one">
+					<img src="assets/Doutora R.png" alt="" width="120px">
+					<p class="doctor--id"> Dra. Raquel </p>
+				</div>
+
+				<div class="content--doctor-one">
+					<img src="assets/Doutor l.png" alt="" width="120px">
+					<p class="doctor--id"> Dr. Julio </p>
+				</div>
+
+				<div class="content--doctor-one">
+					<img src="assets/Doutora o.png" alt="" width="120px">
+					<p class="doctor--id"> Dra. Vitoria </p>
+				</div>
+
+				<div class="content--doctor-one">
+					<img src="assets/Doutor h.png" alt="" width="120px">
+					<p class="doctor--id"> Dr. Enrico </p>
+				</div>
+
+
+			</div>
+
+			<div class="content--row-bene">
+				<div class="content--bene-one">
+					<img src="assets/Sompo.png" alt="" width="125px">
+				</div>
+				<div class="content--bene-two">
+					<img src="assets/Bradesco Saúde.png" alt="" width="125px">
+				</div>
+				<div class="content--bene-three">
+					<img src="assets/NotreDame Intermédica.png" alt="" width="120px">
+				</div>
+				<div class="content--bene-four">
+					<img src="assets/Amil.png" alt="" width="120px">
+				</div>
+				<div class="content--bene-five">
+					<img src="assets/Porto Seguro.png" alt="" width="125px">
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- __________________________________________________________________________________________________________________________________________________________ -->
+
+	<section>
+
+		<div class="content--information">
+			<div class="content--information-row-patient">
+				<div class="content--information-col-patient-one"></div>
+				<div class="content--information-col-patient-two">
+					<div class="patient-information--content">
+						<h2>Informações dos Pacientes</h2>
+						<hr>
+						<p>
+							Saiba como se preparar para uma consulta conosco e o que você pode esperar durante a consulta e o tratamento. Verifique nossas perguntas frequentes para obter mais informações e aprender sobre os planos de pagamento flexíveis que oferecemos.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="content--information-row-doctor">
+				<div class="content--information-col-doctor-one">
+					<div class="information-col-doctor-doctor-content">
+						<h2>Para médicos solicitantes</h2>
+						<hr>
+						<p>
+							Agradecemos a confiança demonstrada pelos GPs quando nos permitem cuidar de seus pacientes. Orgulhamo-nos de nos comunicar com o médico e profissional de saúde que nos indicou antes e depois de atendermos o paciente.
+						</p>
+					</div>
+				</div>
+				<div class="content--information-col-doctor-two"><img scr="assets/Group\ 111.png"></imgassets></div>
+			</div>
+		</div>
+
+	</section>
+
+	<section>
+		<div class="content--payment">
+			<div class="payment--col">
+				<div class="payment--title">
+					<h1 class="payment--title">Precisa de opção de pagamento?</h1>
+				</div>
+				<div class="paymente--subtitle">
+					<span class="paymente--subtitle">
+						Oferecemos planos de pagamento flexíveis para quaisquer procedimentos<br> cirúrgicos na Clínica
+						Dente de Leão. Isso significa menos tempo se<br> preocupando e mais tempo para se concentrar no
+						que
+						é realmente<br> importante – você.
+					</span>
+				</div>
+				<div class="modal-content-new" style="text-align: center;">
+					<button class="button">
+						<a href="#footer" id="modal--teste-two" style="color: #FFF;">SABER MAIS</a>
+					</button>
+					<div id="modal--div-two" class="modal-two">
+						<div class="modal-content-two">
+							<span class="close-two"> &times; </span>
+							<h2>Planos Particulares</h2>
+							<table class="modal--input-two">
+								<form>
+									<tr class="modal--justin-four">
+										<td class="modal-planos">
+											<label for="idtexto"></label>
+											<h4>Plano Individual</h4>
+											<p class="text-planos">Atendimento Exclusivo<br>
+												Painel do Cliente<br>
+												10% de Desconto com Pagamento Antecipado<br>
+												Limpeza Dental</p>
+											<input type="submit" onclick="alert('Entraremos em contato em Breve!!!')"
+												value="Contratar" class="modal--submit-text" />
+
+										</td>
+										<td class="modal-planos-one">
+											<label for="idtexto"></label>
+											<h4>Plano Familiar</h4>
+											<p class="text-planos">Atendimento Exclusivo<br>
+												Painel do Cliente<br>
+												15% De Desconto com Pagamento Antecipado<br>
+												O Plano Familiar e para 02 a 04 Dependentes <br>
+												Limpeza Dental </p>
+											<input type="submit" onclick="alert('Entraremos em contato em Breve!!!')"
+												value="Contratar" class="modal--submit-text-two" />
+										</td>
+										<td class="modal-planos-two">
+											<label for="idtexto"></label>
+											<h4>Plano Plus</h4>
+											<p class="text-planos">Atendimento Exclusivo<br>
+												Painel Do Cliente<br>
+												15% De Desconto Pagamento Antecipado<br>
+												O Plano Plus e para 03 a 06 Dependentes<br>
+												Limpeza Dental <br>
+												Brindes Excluivos</p>
+
+											<input type="submit" onclick="alert('Entraremos em contato em Breve!!!')"
+												value="Contratar" class="modal--submit-text-three" />
+										</td>
+									</tr>
+
+							</table>
+							<!-- <input type="submit" onclick="alert('Entraremos em contato em Breve!!!')" value="Enviar"
+								class="modal--submit" /> -->
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="footer">
+		<div class="content--information-footer">
+			<div class="content--col-logo">
+				<img src="assets/logo clinica.png" alt="">
+				<h3>Clinica Dente de Leão</h3>
+			</div>
+			<div class="content--col-service">
+				<p>Principais Serviços <br><br></p>
+
+				<ul class="col--service">
+					<li>Implantodontia</li>
+					<li>Correção da sua mordida</li>
+					<li>Remoção de cistos</li>
+					<li>Cirurgia oral menor</li>
+					<li>Cirurgia ortognática</li>
+					<li>Cirurgias odontológicas gengivais</li>
+				</ul>
+
+
+			</div>
+			<div class="content--col-contact">
+				<p>Contate-nos<br><br></p>
+
+				<ul>
+					<li class="col-contact-map">Av. Mateo Bei, 3048 <br><br></li>
+					<li class="col-contact-phone">(11) 3958-7959<br><br></li>
+					<li class="col-contact-email">contato@clinicadeleao.com<br><br></li>
+
+
+				</ul>
+
+			</div>
+
+		</div>
+	</section>
+
+	<footer>
+		<div class="content--footer">
+			© 2023 Clinica de Leão | All Rights Reserved
+		</div>
+	</footer>
+	<script src="script.js"></script>
+</body>
+
+</html>
