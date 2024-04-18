@@ -1,0 +1,45 @@
+import re
+from django.db import models
+from django.core.validators import RegexValidator
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+
+# Create your models here.
+class User (AbstractBaseUser, PermissionsMixin):
+    
+    username = models.CharField(
+        verbose_name='Usuario', max_length=30, unique=True, validators=[
+            RegexValidator(
+                re.compile('^[\w.@+-]+$'),
+                'Informe um nome de usuário válido. '
+                'Este valor deve conter apenas letras, números '
+                'e os carecteres: @/./+/-/_.',
+                'invalid'
+                )
+        ], help_text= 'Um nome curto que será usado'+
+                    ' para identificá-lo de forma única na plataforma.'
+    )
+
+    name = models.CharField(verbose_name='Nome', max_length=200)
+    email = models.EmailField(verbose_name='Email', unique=True)
+    is_staff = models.BooleanField(verbose_name='Funcionario', default=False)
+    is_active = models.BooleanField(verbose_name='Ativo', default=True)
+    date_join = models.DateTimeField(verbose_name='Data de Entrada', auto_now_add=True)
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FILDS = ['email']
+
+    objects = UserManager()
+
+    class Meta:
+        verbose_name = 'Usuário'
+        verbose_name_plural = 'Usuários'
+
+    def __str__(self):
+        return self.name or self.username
+    
+    def get_full_name(self):
+        return str(self)
+
+    def get_short_name(self):
+        return str(self).split(' ')[0]
+
