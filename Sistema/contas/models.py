@@ -9,11 +9,11 @@ class User (AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         verbose_name='Usuario', max_length=30, unique=True, validators=[
             RegexValidator(
-                re.compile('^[\w.@+-]+$'),
-                'Informe um nome de usuário válido. '
+                regex= re.compile('^[\w.@+-]+$'),
+                message='Informe um nome de usuário válido. '
                 'Este valor deve conter apenas letras, números '
                 'e os carecteres: @/./+/-/_.',
-                'invalid'
+                code= 'invalid'
                 )
         ], help_text= 'Um nome curto que será usado'+
                     ' para identificá-lo de forma única na plataforma.'
