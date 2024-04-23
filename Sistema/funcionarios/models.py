@@ -45,7 +45,7 @@ class Medico(models.Model):
                                 'xxxxxxx-UF'",
             code='Invalid_crm')
     ])
-    funcionario_id = OneToOneField(Funcionario, on_delete=models.CASCADE, related_name='medicos')
+    funcionario_id = OneToOneField(Funcionario, on_delete=models.CASCADE, related_name='funcioanrios')
     especialidade_Id = ForeignKey(Especialidade, on_delete=models.CASCADE, related_name='especialidades' )
 
     def __str__(self):
