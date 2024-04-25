@@ -1,8 +1,10 @@
+from datetime import date
 from django.db import models
-from django.db.models.fields.related import OneToOneField, ForeignKey
 from contas.models import User
 from django_cpf_cnpj.fields import CPFField
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
+from django.db.models.fields.related import OneToOneField, ForeignKey
 
 # Create your models here.
 
@@ -45,8 +47,29 @@ class Medico(models.Model):
                                 'xxxxxxx-UF'",
             code='Invalid_crm')
     ])
-    funcionario_id = OneToOneField(Funcionario, on_delete=models.CASCADE, related_name='funcioanrios')
-    especialidade_Id = ForeignKey(Especialidade, on_delete=models.CASCADE, related_name='especialidades' )
+    funcionario = OneToOneField(Funcionario, on_delete=models.CASCADE, related_name='funcioanrios')
+    especialidade = ForeignKey(Especialidade, on_delete=models.CASCADE, related_name='especialidades' )
 
     def __str__(self):
         return f'{self.nome}'
+
+def valida_dia(value):
+    today = date.today()
+    weekday = date.fromisoformat(f'{value}').weekday()
+
+    if value < today:
+        raise ValidationError('Não é possivel escolher uma data atrasada.')
+    if weekday == 6:
+        raise ValidationError('Não é possivel escolher uma data atrasada.')
+
+
+class agenda(models.Model):
+    
+    medico = ForeignKey(Medico, on_delete=models.CASCADE, related_name='Agenda')
+    dia = models.DateField(help_text='Ensira uma data', validators=[valida_dia])
+
+    
+
+    HORARIOS = (for i in range(1, 10): for horario in range(9, 19): (f'{i}', horario if len(horario) < 2? f'{}')))
+    
+     
