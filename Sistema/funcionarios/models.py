@@ -1,3 +1,4 @@
+import holidays
 from datetime import date
 from django.db import models
 from contas.models import User
@@ -52,15 +53,26 @@ class Medico(models.Model):
 
     def __str__(self):
         return f'{self.nome}'
+    
+def is_feriado(instance):
+    lista_feriados = holidays.country_holidays('BR')
+
+    if instance in lista_feriados[f'{date.year}-01-01' : f'{date.year}-12-31']:
+        
+
+
 
 def valida_dia(value):
-    today = date.today()
-    weekday = date.fromisoformat(f'{value}').weekday()
+    hoje = date.today()
+    dia_semana = date.fromisoformat(f'{value}').weekday()
 
-    if value < today:
+    if value < hoje:
         raise ValidationError('Não é possivel escolher uma data atrasada.')
-    if weekday == 6:
-        raise ValidationError('Não é possivel escolher uma data atrasada.')
+    if dia_semana == 6:
+        raise ValidationError('Escolha um dia util')
+
+def gera_horarios(list, day):
+    pass
 
 
 class agenda(models.Model):
@@ -70,6 +82,6 @@ class agenda(models.Model):
 
     
 
-    HORARIOS = (for i in range(1, 10): for horario in range(9, 19): (f'{i}', horario if len(horario) < 2? f'{}')))
+    
     
      
