@@ -58,9 +58,9 @@ def is_feriado(instance):
     lista_feriados = holidays.country_holidays('BR')
 
     if instance in lista_feriados[f'{date.year}-01-01' : f'{date.year}-12-31']:
-        
-
-
+        return True
+    else:
+        return False
 
 def valida_dia(value):
     hoje = date.today()
@@ -68,11 +68,19 @@ def valida_dia(value):
 
     if value < hoje:
         raise ValidationError('Não é possivel escolher uma data atrasada.')
+    elif value.is_feriado()
     if dia_semana == 6:
         raise ValidationError('Escolha um dia util')
 
-def gera_horarios(list, day):
-    pass
+def gera_horarios(dia):
+    horarios = []
+    
+    if dia.is_feriado(): 
+        horarios = [(f'{i}', f'{(i + 8) + ':00'}' if len(i+8) < 2 else f'{'0'+(i + 8) + ':00'}') for for i in range(1, 10)]
+        return horarios
+    else:
+        horarios = [(f'{i}', f'{(i + 8) + ':00'}' if len(i+8) < 2 else f'{'0'+(i + 8) + ':00'}') for i in range(1, 4)]
+
 
 
 class agenda(models.Model):
