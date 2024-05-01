@@ -54,13 +54,16 @@ class Medico(models.Model):
     def __str__(self):
         return f'{self.nome}'
     
-def is_feriado(instance):
-    lista_feriados = holidays.country_holidays('BR')
+def is_feriado(dia):
+    objeto_feriados = holidays.country_holidays('BR')
+    ano = f'{date.today()}'
 
-    if instance in lista_feriados[f'{date.year}-01-01' : f'{date.year}-12-31']:
-        return True
-    else:
-        return False
+    for objeto_feriado in objeto_feriados[f'{ano[:5]}-01-01' : f'{ano[:5]}-12-31']:
+
+        if dia == objeto_feriado:
+            return True
+        else:
+            pass
 
 def valida_dia(value):
     hoje = date.today()
@@ -68,18 +71,20 @@ def valida_dia(value):
 
     if value < hoje:
         raise ValidationError('Não é possivel escolher uma data atrasada.')
-    elif value.is_feriado()
-    if dia_semana == 6:
+    
+    elif is_feriado(value) or dia_semana == 6:
         raise ValidationError('Escolha um dia util')
 
 def gera_horarios(dia):
     horarios = []
     
-    if dia.is_feriado(): 
-        horarios = [(f'{i}', f'{(i + 8) + ':00'}' if len(i+8) < 2 else f'{'0'+(i + 8) + ':00'}') for for i in range(1, 10)]
+    if not is_feriado(dia):
+        horarios = [(f'{i}', f'{i + 8}:{j}0' if i+8 > 9 else f'0{i + 8}:00') for i in range(1, 11) for j in range(0,4,3)]
+        
         return horarios
     else:
-        horarios = [(f'{i}', f'{(i + 8) + ':00'}' if len(i+8) < 2 else f'{'0'+(i + 8) + ':00'}') for i in range(1, 4)]
+        horarios = [(f'{i}', f'{i + 8}:00' if i+8 > 9 else f'0{i + 8}:00') for i in range(1, 5)]
+        return horarios
 
 
 
