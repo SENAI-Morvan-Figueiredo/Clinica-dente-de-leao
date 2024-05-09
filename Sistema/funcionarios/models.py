@@ -13,13 +13,14 @@ class Funcionario(models.Model):
 
     nome = models.CharField('Nome', max_length=200)
     cpf = CPFField(masked=True)
+    genero = models.CharField('Genro', max_length=30)
     
     cep = models.CharField('CEP', max_length=9)
     rua = models.CharField('Rua', max_length=200)
-    numero = models.CharField('Numero', max_length=20)
+    numero = models.CharField('Numero', max_length=15)
+    complemento = models.CharField('Complemento', max_length=200, blank=True)
     municipio = models.CharField('Municipio', max_length=20)
     unidade_federal = models.CharField('Unidade Federal', max_length=2)
-    complemento = models.CharField('Complemento', max_length=200, blank=True)
     
     data_nacimento = models.DateField('Data de Nacimento')
     data_contratacao = models.DateField('Data de contratação')
@@ -62,8 +63,6 @@ def is_feriado(dia):
 
         if dia == objeto_feriado:
             return True
-        else:
-            pass
 
 def valida_dia(value):
     hoje = date.today()
@@ -75,26 +74,45 @@ def valida_dia(value):
     elif is_feriado(value) or dia_semana == 6:
         raise ValidationError('Escolha um dia util')
 
-def gera_horarios(dia):
-    horarios = []
+# to do: gerador de horarios
+
+# def gera_horarios(dia):
+#     horarios = []
     
-    if not is_feriado(dia):
-        horarios = [(f'{i}', f'{i + 8}:{j}0' if i+8 > 9 else f'0{i + 8}:00') for i in range(1, 11) for j in range(0,4,3)]
+#     if not is_feriado(dia):
+#         horarios = [(f'{i}', f'{i + 8}:{j}0' if i+8 > 9 else f'0{i + 8}:00') for i in range(1, 11) for j in range(0,4,3)]
         
-        return horarios
-    else:
-        horarios = [(f'{i}', f'{i + 8}:00' if i+8 > 9 else f'0{i + 8}:00') for i in range(1, 5)]
-        return horarios
+#         return horarios
+#     else:
+#         horarios = [(f'{i}', f'{i + 8}:00' if i+8 > 9 else f'0{i + 8}:00') for i in range(1, 5)]
+#         return horarios
+
+
+class Servico(models.Model):
+    servico = models.CharField('Serviço', max_length=200)
+    descricao = models.CharField('Descrição', max_length=1000)
+    valor = models.FloatField('Valor')
 
 
 
-class agenda(models.Model):
+
+class Agenda(models.Model):
     
     medico = ForeignKey(Medico, on_delete=models.CASCADE, related_name='Agenda')
     dia = models.DateField(help_text='Ensira uma data', validators=[valida_dia])
 
-    
+    HORARIOS = (
+        ('1', '09:00'),
+        ('2', '10:00'),
+        ('3', '11:00'),
+        ('4', '12:00'),
+        ('5', '13:00'),
+        ('6', '14:00'),
+        ('7', '15:00'),
+        ('8', '16:00'),
+        ('9', '17:00'),
+        ('10', '18:00'),
+    )
 
-    
-    
-     
+    horario = models.CharField('Horario',max_length=30, choices=HORARIOS)
+    servico = ForeignKey(Servico, on_delete=models.CASCADE)
