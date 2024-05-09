@@ -1,0 +1,66 @@
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f093fb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, #201b2c, #201b2c);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right,#201b2c, #201b2c)
+    }
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+    
+    .card-body{
+        background: #2f2841;
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px #00000056;
+    }
+
+
+    .mt-4{
+        display: flex;
+        justify-content: center;
+    }
+    .btn {
+        width: 50%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #201b2c;
+        background: #00ff88;
+        cursor: pointer;
+        box-shadow: 0px 10px 40px -12px #00ff8052; 
+    }
+    .btn:hover{
+        background: #00ff80c5;
+        color: black;
+      }
+
+    .mb-4{
+        text-transform: uppercase;
+        color: white;
+        font-weight:600;
+        margin: 0;
+    }
+
+    .reg{
+        text-transform: uppercase;
+        color: #00ff88;
+        font-weight:650;
+        letter-spacing: 2px;
+        font-size: 2rem;
+        text-align: center;
+    }
