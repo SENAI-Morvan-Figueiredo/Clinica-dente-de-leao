@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'contas',
     'funcionarios',
+    'clientes',
     'django_cpf_cnpj',
 ]
 

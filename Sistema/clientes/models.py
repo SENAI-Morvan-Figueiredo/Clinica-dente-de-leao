@@ -15,11 +15,11 @@ class ServicoCoberto(models.Model):
 
 class PlanoConvenio(models.Model):
     plano = models.CharField('Plano', max_length=30)
-    convenio = ForeignKey(Convenio, on_delete=models.CASCADE, related_name='plano convenio')
+    convenio = ForeignKey(Convenio, on_delete=models.CASCADE, related_name='plano_convenio')
 
 class ServicoPlano(models.Model):
-    servico = ManyToManyField(ServicoCoberto, related_name='serviço plano')
-    plano = ManyToManyField(PlanoConvenio, related_name='servico plano')
+    servico = ManyToManyField(ServicoCoberto, related_name='serviço_plano')
+    plano = ManyToManyField(PlanoConvenio, related_name='servico_plano')
 
 class Clientes(models.Model):
 
@@ -27,8 +27,8 @@ class Clientes(models.Model):
     cpf = CPFField(masked=True)
     genero = models.CharField('Genero', max_length=30)
     
-    convenio = ForeignKey(Convenio, related_name='clientes')
-    plano = ForeignKey(PlanoConvenio, related_name='clientes')
+    convenio = ForeignKey(Convenio, on_delete=models.CASCADE, related_name='clientes')
+    plano = ForeignKey(PlanoConvenio, on_delete=models.CASCADE, related_name='clientes')
     
     cep = models.CharField('CEP', max_length=9)
     rua = models.CharField('Rua', max_length=200)
