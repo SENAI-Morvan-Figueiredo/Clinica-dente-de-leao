@@ -13,7 +13,7 @@ class Funcionario(models.Model):
 
     nome = models.CharField('Nome', max_length=200)
     cpf = CPFField(masked=True)
-    genero = models.CharField('Genro', max_length=30)
+    genero = models.CharField('Genero', max_length=30)
     
     cep = models.CharField('CEP', max_length=9)
     rua = models.CharField('Rua', max_length=200)
