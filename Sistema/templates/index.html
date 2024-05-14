@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-<div id="header-homepage--nao-logado">
+<header id="header-homepage--nao-logado">
     <div id="header--homepage--nao-logado--nome-clinica">
-        <h1>Clinica Dente de Leao</h1>
+        <h1>Dente de Leão</h1>
         <h3>Clinica Odontologica</h3>
     </div>
-</div>
+</header>
 <div id="secao-login--homepage--nao-logado">
-    
+    <label id="login--usuario-label" for="login--usuario-input"></label>
+    <input id="login--usuario-input" type="text" placeholder="Usuario ou E-mail">
+
+    <label id="login--senha-label" for="login--senha-imput"></label>
+    <input id="login--senha-imput" type="password" placeholder="Senha">
+
+    <a href="">Cadastre-se!</a>
+    <a href="">Esqueci minha senha</a>
+
+    <button id="login--btn-enviar" type="submit">Entrar</button>
 </div>
-
-
 
 {% endblock %}

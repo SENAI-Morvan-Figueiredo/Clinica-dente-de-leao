@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    border: solid 3px red;
+}
+
+
+#header--nao-logado h1{
+    margin-bottom: 5px;
+}
+
+#header---nao-logado h3{
+    margin-top: 0px;
+}
+
+#header---nao-logado{
+    text-align: center;
+    
+}
+
+#secao-login--nao-logado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin: 10px;
+    background-color: #ffdead;
+    border-radius: 10px;
+    height: 150px;
+}
+
+#secao-login--nao-logado input{
+    margin: 5px;
+}
+
+
+
+
