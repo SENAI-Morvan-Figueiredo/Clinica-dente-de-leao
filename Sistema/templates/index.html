@@ -7,17 +7,9 @@
         <h3>Clinica Odontologica</h3>
     </div>
 </header>
-<div id="secao-login--homepage--nao-logado">
-    <label id="login--usuario-label" for="login--usuario-input"></label>
-    <input id="login--usuario-input" type="text" placeholder="Usuario ou E-mail">
+<div id="secao-cadastre-se-login--homepage--nao-logado">
 
-    <label id="login--senha-label" for="login--senha-imput"></label>
-    <input id="login--senha-imput" type="password" placeholder="Senha">
-
-    <a href="">Cadastre-se!</a>
-    <a href="">Esqueci minha senha</a>
-
-    <button id="login--btn-enviar" type="submit">Entrar</button>
+    <a id="login-redirect" href="{% url 'contas:login' %}">login</a>
+    <a id="singin-redirect" href="">Cadastre-se!</a>
 </div>
-
 {% endblock %}

@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 
+{% block titulo %}
+Entrar
+{% endblock %}
+
+
 {% block conteudo %}
-<header id="header--nao-logado">
-    <div id="header--nao-logado--nome-clinica">
+<header id="header">
+    <div id="header--login--nome-clinica">
         <h1>Dente de Leão</h1>
         <h3>Clinica Odontologica</h3>
     </div>
 </header>
-<div id="secao-login--nao-logado">
+
+<div id="secao-login">
     <label id="login--usuario-label" for="login--usuario-input"></label>
     <input id="login--usuario-input" type="text" placeholder="Usuario ou E-mail">
 
     <label id="login--senha-label" for="login--senha-imput"></label>
     <input id="login--senha-imput" type="password" placeholder="Senha">
 
-    <label for="cadastrar"></label>
-    <a id="Cadastre-se" href="">Clique aqui</a>
-    <a href="">Esqueci minha senha</a>
+    <a id="singin--login-page" href="">Cadastre-se</a>
+    <a id="re--login-page" href="">Esqueci minha senha</a>
 
     <button id="login--btn-enviar" type="submit">Entrar</button>
 </div>
