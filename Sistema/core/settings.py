@@ -121,3 +121,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'contas.User'
+
+LOGIN = 'conta/entrar'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT = 'logout'
+LOGOUT_REDIRECT_URL = '/'
+
+AUTH_USER_MODEL = 'contas.User'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend'
+    )

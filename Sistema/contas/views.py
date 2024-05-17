@@ -9,12 +9,12 @@ from .forms import UserAdminCreationForm
 class Login(LoginView):
     
     model = User
-    template_name = 'login/login.html'
+    template_name = 'conta/login.html'
 
 class RegisterView(CreateView):
 
     model = User
-    template_name = 'accounts/register.html'
+    template_name = '/singin.html'
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('index')
     

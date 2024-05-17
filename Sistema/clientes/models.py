@@ -1,8 +1,7 @@
 from django.db import models
-from contas.models import User
+from django.conf import settings
 from django_cpf_cnpj.fields import CPFField, CNPJField
 from django.db.models.fields.related import ManyToManyField, OneToOneField, ForeignKey
-
 
 
 class Convenio(models.Model):
@@ -25,7 +24,14 @@ class Clientes(models.Model):
 
     nome = models.CharField('Nome', max_length=200)
     cpf = CPFField(masked=True)
-    genero = models.CharField('Genero', max_length=30)
+    
+    GENERO = (
+        ("MAS", "Masculino"),
+        ("FEM", "Feminino"),
+        ("OTR", "Outro"),
+    )
+    
+    genero = models.CharField(max_length=9, choices=GENERO)
     
     convenio = ForeignKey(Convenio, on_delete=models.CASCADE, related_name='clientes')
     plano = ForeignKey(PlanoConvenio, on_delete=models.CASCADE, related_name='clientes')
@@ -41,7 +47,11 @@ class Clientes(models.Model):
     data_inicio = models.DateField('Data de Inicio')
     
     is_ativo = models.BooleanField('Está ativo', default=True)
-    user_id = OneToOneField(User, on_delete=models.CASCADE, related_name='clientes')
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, 
+        verbose_name='Usuário',
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f'{self.nome}'

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div id="secao-singin">
+    <form method="post">
+        {% csrf_token %}
+
+        <label id="singin--usuario-label" for="singin--usuario-input">Usuario:</label>
+        <input id="singin--usuario-input" type="text" name='username' required>
+        
+        <label id="singin--nome-label" for="singin--nome-input">Usuario:</label>
+        <input id="singin--nome-input" type="text" name='name' required>
+        
+        <label id="singin--email-label" for="singin--email-input">Usuario:</label>
+        <input id="singin--email-input" type="text" name='email'>
+        
+        <label id="singin--senha-label" for="singin--senha-imput">Senha:</label>
+        <input id="singin--senha-imput" type="password" name='password'>
+        
+        <a id="singin--singin-page" href="{% url 'contas:login' %}">Login</a>
+        
+        <button id="singin--btn-enviar" type="submit">Entrar</button>
+    </form>
+</div>
+{% endblock %}

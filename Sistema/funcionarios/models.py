@@ -1,7 +1,7 @@
 import holidays
 from datetime import date
 from django.db import models
-from contas.models import User
+from django.conf import settings
 from django_cpf_cnpj.fields import CPFField
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
@@ -25,7 +25,11 @@ class Funcionario(models.Model):
     is_medico = models.BooleanField('É medico', default=False)
     is_ativo = models.BooleanField('Está ativo', default=True)
 
-    user_id = OneToOneField(User, on_delete=models.CASCADE, related_name='funcionarios')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        verbose_name='Usuário', 
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f'{self.nome}'
@@ -93,7 +97,6 @@ class Servico(models.Model):
 
 
 
-
 class Agenda(models.Model):
     
     medico = ForeignKey(Medico, on_delete=models.CASCADE, related_name='Agenda')
@@ -101,16 +104,38 @@ class Agenda(models.Model):
 
     HORARIOS = (
         ('1', '09:00'),
-        ('2', '10:00'),
-        ('3', '11:00'),
-        ('4', '12:00'),
-        ('5', '13:00'),
-        ('6', '14:00'),
-        ('7', '15:00'),
-        ('8', '16:00'),
-        ('9', '17:00'),
-        ('10', '18:00'),
+        ('2', '09:30'),
+        ('3', '10:00'),
+        ('4', '10:30'),
+        ('5', '11:00'),
+        ('6', '11:30'),
+        ('7', '12:00'),
+        ('8', '12:30'),
+        ('9', '13:00'),
+        ('10', '13:30'),
+        ('11', '14:00'),
+        ('12', '14:30'),
+        ('13', '15:00'),
+        ('14', '15:30'),
+        ('15', '16:00'),
+        ('16', '16:30'),
+        ('17', '17:30'),
+        ('18', '17:30'),
+        ('19', '18:00'),
     )
+    
+    horario = models.CharField(max_length=10, choices=HORARIOS)
 
-    horario = models.CharField('Horario',max_length=30, choices=HORARIOS)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        verbose_name='Usuário', 
+        on_delete=models.CASCADE
+    )
+    
     servico = ForeignKey(Servico, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('horario', 'dia')
+        
+    def __str__(self):
+        return f'{self.dia.strftime("%b %d %Y")} - {self.get_horario_display()} - {self.medico}'

@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-#secao-login{
+#secao-login form{
     display: flex;
     justify-content: center;
     align-items: center;

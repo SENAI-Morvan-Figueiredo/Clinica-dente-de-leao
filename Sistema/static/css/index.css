@@ -7,20 +7,19 @@ body{
 }
 
 
-#header--nao-logado h1{
+#header h1{
     margin-bottom: 5px;
 }
 
-#header---nao-logado h3{
+#header h3{
     margin-top: 0px;
 }
 
-#header---nao-logado{
+#header{
     text-align: center;
-    
 }
 
-#secao-login--nao-logado{
+#secao-login{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +30,7 @@ body{
     height: 150px;
 }
 
-#secao-login--nao-logado input{
+#secao-login input{
     margin: 5px;
 }
 

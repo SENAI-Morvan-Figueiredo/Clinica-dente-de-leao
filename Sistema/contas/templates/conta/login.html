@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Entrar
+{% endblock %}
+
+
+{% block conteudo %}
+<div id="log">
+    <h1>Entrar</h1>
+</div>
+
+<div id="secao-login">
+    <form method="post">
+        {% csrf_token %}
+        
+        <div>
+            <label id="login--usuario-label" for="login--usuario-input">Usuario:</label>
+            <input id="login--usuario-input" type="text" name='username'>
+        </div>
+        <div>
+            <label id="login--senha-label" for="login--senha-imput">Senha:</label>
+            <input id="login--senha-imput" type="password" name='password'>
+        </div>
+            
+        <a id="singin--login-page" href="{% url 'contas:singin' %}">Cadastre-se</a>
+        <a id="reset-password--login-page" href="">Esqueci minha senha</a>
+        
+        <button id="login--btn-enviar" type="submit">Entrar</button>
+    </form>
+</div>
+
+{% endblock %}
