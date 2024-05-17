@@ -7,8 +7,6 @@ from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.db.models.fields.related import OneToOneField, ForeignKey
 
-# Create your models here.
-
 class Funcionario(models.Model):
 
     nome = models.CharField('Nome', max_length=200)
