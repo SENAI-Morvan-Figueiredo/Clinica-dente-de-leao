@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView, UpdateView, FormView, DetailView
-from .forms import CreateUserForm
+from .forms import UserAdminCreationForm
 
 class Login(LoginView):
     
@@ -15,7 +15,7 @@ class RegisterView(CreateView):
 
     model = User
     template_name = 'accounts/register.html'
-    form_class = CreateUserForm
+    form_class = UserAdminCreationForm
     success_url = reverse_lazy('index')
     
     def form_valid(self, form):
