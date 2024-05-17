@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block conteudo %}
-<header id="header-homepage--nao-logado">
-    <div id="header--homepage--nao-logado--nome-clinica">
-        <h1>Dente de Leão</h1>
-        <h3>Clinica Odontologica</h3>
-    </div>
-</header>
 <div id="secao-cadastre-se-login--homepage--nao-logado">
 
     <a id="login-redirect" href="{% url 'contas:login' %}">login</a>

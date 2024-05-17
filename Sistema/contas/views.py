@@ -14,7 +14,7 @@ class Login(LoginView):
 class RegisterView(CreateView):
 
     model = User
-    template_name = '/singin.html'
+    template_name = 'conta/singin.html'
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('index')
     

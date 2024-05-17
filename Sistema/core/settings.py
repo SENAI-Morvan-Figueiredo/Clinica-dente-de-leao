@@ -20,16 +20,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'contas',
+    'funcionarios',
+    'clientes',
+    'django_cpf_cnpj',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'contas',
-    'funcionarios',
-    'clientes',
-    'django_cpf_cnpj',
 ]
 
 MIDDLEWARE = [
@@ -111,7 +111,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/'),
 ]
 
 # Default primary key field type
@@ -122,9 +122,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'contas.User'
 
-LOGIN = 'conta/entrar'
+LOGIN = 'conta/entrar/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT = 'logout'
+LOGOUT = 'logout/'
 LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'contas.User'
