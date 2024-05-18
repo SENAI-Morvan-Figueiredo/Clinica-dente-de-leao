@@ -20,7 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'contas',
+    'accounts',
     'funcionarios',
     'clientes',
     'django_cpf_cnpj',
@@ -120,14 +120,14 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'contas.User'
+AUTH_USER_MODEL = 'accounts.User'
 
-LOGIN = 'conta/entrar/'
+LOGIN = 'accounts/entrar/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT = 'logout/'
+LOGOUT = 'accounts/logout/'
 LOGOUT_REDIRECT_URL = '/'
 
-AUTH_USER_MODEL = 'contas.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
