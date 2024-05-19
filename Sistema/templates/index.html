@@ -4,7 +4,7 @@
 {% block conteudo %}
 {% if user.is_authenticated %}
 <div id="secao-cadastre-se-login--homepage--logado">
-    <h3>bem-vindo, {{ user.name }}!</h1>
+    <h3>bem-vindo, {{ user }}!</h1>
 
     <a id="logout" href="{% url 'accounts:logout' %}">logout</a>
 </div>
