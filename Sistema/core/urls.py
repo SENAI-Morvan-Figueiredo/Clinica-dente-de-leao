@@ -1,10 +1,14 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
+# from django.urls.conf import include
 from . import views
 
+
 urlpatterns = [
-    path('clientes/', views.ClienteListView.as_view(), name='cliente-list'),
-    path('clientes/<int:pk>/', views.ClienteDetailView.as_view(), name='cliente-detail'),
-    path('clientes/create/', views.ClienteCreateView.as_view(), name='cliente-create'),
-    path('clientes/update/<int:pk>/', views.ClienteUpdateView.as_view(), name='cliente-update'),
-    path('clientes/delete/<int:pk>/', views.ClienteDeleteView.as_view(), name='cliente-delete'),
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+
+    # path('funcionarios/', include('funcionarios.urls', namespace= 'funcionarios')),
+    # path('clientes/', include(('clientes.urls', 'clientes'), namespace= 'clientes')),
+    path('contas/', include(('accounts.urls', 'accounts'), namespace= 'accounts')),
 ]
