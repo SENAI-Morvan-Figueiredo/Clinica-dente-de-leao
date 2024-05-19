@@ -2,9 +2,18 @@
 {% load static %}
 
 {% block conteudo %}
-<div id="secao-cadastre-se-login--homepage--nao-logado">
+{% if user.is_authenticated %}
+<div id="secao-cadastre-se-login--homepage--logado">
+    <h3>bem-vindo, {{ user.name }}!</h1>
 
+    <a id="logout" href="{% url 'accounts:logout' %}">logout</a>
+</div>
+{% else %}
+<div id="secao-cadastre-se-login--homepage--nao-logado">
+    
     <a id="login-redirect" href="{% url 'accounts:login' %}">login</a>
     <a id="singin-redirect" href="{% url 'accounts:singin' %}">Cadastre-se!</a>
 </div>
+{% endif %}
+
 {% endblock %}

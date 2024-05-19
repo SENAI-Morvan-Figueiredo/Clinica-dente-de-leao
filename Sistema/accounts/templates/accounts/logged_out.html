@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+  <div class="logout-page">
+    <p>Você saiu!</p>
+      <a href="{% url 'index'%}">
+        Volte para o Login.</a>
+  </div>
+{% endblock  %}

@@ -10,6 +10,10 @@ class Login(LoginView):
     
     model = User
     template_name = 'accounts/login.html'
+    
+class Logout(LoginView):
+    
+    template_name = 'accounts/logged_out.html'
 
 class RegisterView(CreateView):
 
@@ -26,4 +30,5 @@ class RegisterView(CreateView):
     
 
 login = Login.as_view()
-singin = RegisterView.as_view() 
+singin = RegisterView.as_view()
+logout = Logout.as_view()
