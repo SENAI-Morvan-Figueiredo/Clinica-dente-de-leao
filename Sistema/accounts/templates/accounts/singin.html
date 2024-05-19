@@ -11,11 +11,19 @@ Registrar
     <h1>Registrar</h1>
 </div>
 
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
 <div id="secao-singin">
     <form method="post">
         {% csrf_token %}
         <div>
-            <label id="singin--usuario-label" for="singin--usuario-input">Usuario:</label>
+            <label id="singin--usuario-label" for="singin--usuario-input">Usuário:</label>
             <input id="singin--usuario-input" type="text" name='username' required>
         </div>
         <div>
