@@ -12,7 +12,7 @@ Registrar
 </div>
 
 <div id="secao-singin">
-    <form method="post">
+    <form method="post" action="{% url 'accounts:singin' %}">
         {% csrf_token %}
         <div>
             <label id="singin--usuario-label" for="singin--usuario-input">Usuario:</label>

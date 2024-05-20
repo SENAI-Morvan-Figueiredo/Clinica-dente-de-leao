@@ -5,15 +5,18 @@ from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView, UpdateView, FormView, DetailView
 from .forms import UserAdminCreationForm
+from django.contrib import auth
 
 class Login(LoginView):
     
     model = User
     template_name = 'accounts/login.html'
     
-class Logout(LoginView):
-    
-    template_name = 'accounts/logged_out.html'
+def logout(request):
+    auth.logout(request)
+    return render(request, 'accounts/logged_out.html')
+
+
 
 class RegisterView(CreateView):
 
@@ -31,4 +34,4 @@ class RegisterView(CreateView):
 
 login = Login.as_view()
 singin = RegisterView.as_view()
-logout = Logout.as_view()
+# logout = Logout.as_view()
