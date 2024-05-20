@@ -10,15 +10,6 @@
     text-align: center;
 }
 
-/* #secao-login form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column nowrap;
-    margin: 10px;
-    border-radius: 10px;
-    height: 150px;
-} */
 
 #secao-login input{
     margin: 5px;

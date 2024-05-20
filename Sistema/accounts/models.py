@@ -23,7 +23,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='Email', unique=True)
     is_staff = models.BooleanField(verbose_name='is', default=False)
     is_active = models.BooleanField(verbose_name='Está Ativo', default=True)
-    date_join = models.DateTimeField(verbose_name='Data de Entrada', auto_now_add=True)
+    date_joined = models.DateTimeField(verbose_name='Data de Entrada', auto_now_add=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']

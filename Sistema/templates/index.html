@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block conteudo %}
 
 {% if user.is_authenticated %}
 <div id="secao-cadastre-se-login--homepage--logado">
     <h3>bem-vindo, {{ request.user }}.</h1>
-
-    <a id="logout" href="{% url 'accounts:logout' %}">logout</a>
+    <div>
+        <a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a>
+        <a id="logout" href="{% url 'accounts:logout' %}">logout</a>
+    </div>
 </div>
 {% else %}
 <div id="secao-cadastre-se-login--homepage--nao-logado">
