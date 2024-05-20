@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from .models import *
 from django.urls import reverse_lazy
-from django.contrib import messages
-from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic import CreateView, UpdateView, FormView, DetailView
+from django.contrib import messages, auth
+from django.contrib.auth.views import LoginView
+from django.views.generic import CreateView, View, UpdateView, FormView, DetailView
 from .forms import UserAdminCreationForm
-from django.contrib import auth
+
+
+class IndexView(View):
+    def get(self, request):
+        return render(request, 'accounts/index.html')
 
 class Login(LoginView):
     
@@ -32,6 +36,8 @@ class RegisterView(CreateView):
         return super().form_valid(form)
     
 
+
+
 login = Login.as_view()
 singin = RegisterView.as_view()
-# logout = Logout.as_view()
+index = IndexView.as_view()

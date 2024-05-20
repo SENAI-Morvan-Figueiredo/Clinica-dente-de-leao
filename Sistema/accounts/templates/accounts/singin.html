@@ -1,39 +1,45 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load widget_tweaks %}
 
 {% block titulo %}
-Registrar
+Registrar | {{ block.super }}
 {% endblock %}
 
 {% block conteudo %}
 
-<div id="singin-titulo">
+<div id="singup-titulo">
     <h1>Registrar</h1>
 </div>
 
-<div id="secao-singin">
-    <form method="post" action="{% url 'accounts:singin' %}">
+<div id="secao-singup">
+    <form method="post" action="{% url 'accounts:singup' %}">
         {% csrf_token %}
-        <div>
-            <label id="singin--usuario-label" for="singin--usuario-input">Usuario:</label>
-            <input id="singin--usuario-input" type="text" name='username' required>
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ error }}
         </div>
-        <div>
-            <label id="singin--nome-label" for="singin--nome-input">Nome:</label>
-            <input id="singin--nome-input" type="text" name='name' required>
-        </div>
-        <div>
-            <label id="singin--email-label" for="singin--email-input">E-mail:</label>
-            <input id="singin--email-input" type="text" name='email'>
-        </div>
-        <div>
-            <label id="singin--senha-label" for="singin--senha-imput">Senha:</label>
-            <input id="singin--senha-imput" type="password" name='password'>
-        </div>
-        
-        <a id="singin--singin-page" href="{% url 'accounts:login' %}">Login</a>
-        
-        <button id="singin--btn-enviar" type="submit">Entrar</button>
+        {% endfor %}
+        <fieldset>
+            {% for field in form %}
+            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                <label for="{{ field.auto_id }}" class="col-md-3 control-label">
+                    {{ field.label }}</label>
+                <div>
+                    {% render_field field class="form-control" %}
+                    {% for error in field.errors %}
+                    <span class="help-block">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            <div>
+                <div>
+                    <button type="submit" class="btn-register-submit">Registrar</button>
+                </div>
+
+            </div>
+            <a id="login-redirect" href="{% url 'accounts:login' %}">login</a>
+        </fieldset>
     </form>
 </div>
 {% endblock %}

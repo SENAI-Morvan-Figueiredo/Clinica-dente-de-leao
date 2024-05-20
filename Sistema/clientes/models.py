@@ -20,7 +20,7 @@ class ServicoPlano(models.Model):
     servico = ManyToManyField(ServicoCoberto, related_name='serviço_plano')
     plano = ManyToManyField(PlanoConvenio, related_name='servico_plano')
 
-class Clientes(models.Model):
+class Cliente(models.Model):
 
     nome = models.CharField('Nome', max_length=200)
     cpf = CPFField(masked=True)

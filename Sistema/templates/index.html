@@ -5,7 +5,7 @@
 
 {% if user.is_authenticated %}
 <div id="secao-cadastre-se-login--homepage--logado">
-    <h3>bem-vindo, {{ user }}!</h1>
+    <h3>bem-vindo, {{ request.user }}.</h1>
 
     <a id="logout" href="{% url 'accounts:logout' %}">logout</a>
 </div>
@@ -13,7 +13,7 @@
 <div id="secao-cadastre-se-login--homepage--nao-logado">
     
     <a id="login-redirect" href="{% url 'accounts:login' %}">login</a>
-    <a id="singin-redirect" href="{% url 'accounts:singin' %}">Cadastre-se!</a>
+    <a id="singup-redirect" href="{% url 'accounts:singup' %}">Cadastre-se!</a>
 </div>
 {% endif %}
 

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'funcionarios',
     'clientes',
     'django_cpf_cnpj',
+    'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
