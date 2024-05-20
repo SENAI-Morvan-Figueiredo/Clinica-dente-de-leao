@@ -7,7 +7,7 @@
     <h3>bem-vindo, {{ request.user }}.</h1>
     <div>
         <a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a>
-        <a id="logout" href="{% url 'accounts:logout' %}">logout</a>
+        <a id="logout" href="{% url 'accounts:logout' %}">Sair</a>
     </div>
 </div>
 {% else %}

@@ -1,32 +1,36 @@
 {% extends 'base.html'%}
 
 {% block title %}
-    Minha Conta | {{ block.super }}
+Minha Conta | {{ block.super }}
 {% endblock%}
 
 {% block conteudo %}
-     <ol class="breadcrumb">
-          <li><a href="{% url 'accounts:index'%}">Início</a></li>
-          <li class="active">Minha Conta</li>
-        </ol>
-        <div class="row">
-            <div>
-            {% block accounts_container %}
-                <h2>Bem vindo {{ user.name }} </h2>
-            {% endblock  %}
-            </div>
-            <div>
-                <div class="list-group">
-                  <a href="#">Minha Conta</a>
-                  <a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a>
-                  <a href="">Alterar Senha</a>
-                  <a href=""> Dados Complementares </a>
-                  <a href="">Minhas Consultas</a>
-                  {% if request.user.is_staff or request.user.is_superuser %}
-                  <a href="}">Agendas</a>
-                  <a href="">Medicos</a>
-                  <a href="">Especialidade</a>
-                  {% endif %}
-                </div>
-            </div>
-{% endblock  %}
+<ol>
+    <li><a href="{% url 'accounts:index'%}">Início</a></li>
+    <li class="active">Minha Conta</li>
+</ol>
+<div class="row">
+    <div>
+        <div class="list-group">
+            <ul>
+                <li><a href="{% url 'accounts:index'%}">Minha Conta</a></li>
+                <li><a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a></li>
+                <li><a href="{% url 'accounts:update_password'%}">Alterar Senha</a></li>
+                <li><a href=""> Dados Complementares </a></li>
+                <li><a href="">Minhas Consultas</a></li>
+                {% if request.user.is_staff or request.user.is_superuser %}
+                <li><a href="}">Agendas</a></li>
+                <li><a href="">Medicos</a></li>
+                <li><a href="">Especialidade</a></li>
+                {% endif %}
+                <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
+                
+            </ul>
+        </div>
+        <div>
+            {% block accounts_seccion %}
+            <h2>Bem vindo, {{ user.username }} </h2>
+            {% endblock %}
+        </div>
+    </div>
+    {% endblock %}
