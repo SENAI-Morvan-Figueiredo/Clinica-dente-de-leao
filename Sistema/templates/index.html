@@ -6,17 +6,26 @@
 <div id="secao-cadastre-se-login--homepage--logado">
     <p>bem-vindo, {{ request.user }}.</p>
     <div>
-        <a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a>
-        <a id="logout" href="{% url 'accounts:logout' %}">Sair</a>
-        <a id="consultas" href="">Minhas Consultas</a>
+        <ul>
+            <li><a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a></li>
+            <li><a id="logout" href="{% url 'accounts:logout' %}">Sair</a></li>
+            <li><a id="consultas" href="">Minhas Consultas</a></li>
+        </ul>
         {% if user.is_staff or user.is_superuser %}
-        <a href="">Agendas</a>
-        <a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a>
-        <a href="">Medicos</a>
-        <a href="">Especialidade</a>
-        {% elif user.is_superuser %}
-        <a href="">cadastrar usuarios</a>
-        {% endif %}
+        <ul>
+            <li><a href="">Agendas</a></li>
+            <li><a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a></li>
+            <li><a href="">Medicos</a></li>
+            <li><a href="">Especialidade</a></li>
+            {% elif user.is_superuser %}
+            <li><a href="{% url 'accounts:singup' %}">Cadastrar usuarios</a></li>
+            {% endif %}
+        </ul>
+        
+        
+        
+       
+        </ul>
     </div>
 </div>
 {% else %}
