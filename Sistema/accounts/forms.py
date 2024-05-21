@@ -6,8 +6,10 @@ class UserAdminCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        if User.is_superuser == 1 or User.is_staff == 1:
+        if  User.is_superuser == 1:
             fields = ['username', 'name', 'last_name', 'email', 'is_staff', 'is_superuser']
+        elif User.is_staff == 1:
+            fields = ['username', 'name', 'last_name', 'email', 'is_staff']
         else:
             fields = ['username', 'name', 'last_name', 'email']
             
