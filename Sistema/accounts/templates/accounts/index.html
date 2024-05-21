@@ -19,9 +19,11 @@ Minha Conta | {{ block.super }}
                 <li><a href=""> Dados Complementares </a></li>
                 <li><a href="">Minhas Consultas</a></li>
                 {% if request.user.is_staff or request.user.is_superuser %}
-                <li><a href="}">Agendas</a></li>
+                <li><a href="">Agendas</a></li>
                 <li><a href="">Medicos</a></li>
                 <li><a href="">Especialidade</a></li>
+                {% elif request.user.is_superuser %}
+                <li><a href="{}">usuarios</a></li>
                 {% endif %}
                 <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
                 
