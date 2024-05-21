@@ -38,13 +38,13 @@ class FuncionarioCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
     ]
     success_url = reverse_lazy('index')
 
-# class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
+class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
-#     model = Medico
-#     login_url = 'accounts:login'
-#     template_name = 'medicos/cadastro.html'
-#     fields = ['nome', 'crm', 'email', 'telefone', 'especialidade']
-#     success_url = reverse_lazy('medicos:medicos_lista')
+    model = Medico
+    login_url = 'accounts:login'
+    template_name = 'medicos/cadastro.html'
+    fields = ['nome', 'crm', 'email', 'telefone', 'especialidade']
+    success_url = reverse_lazy('medicos:medicos_lista')
     
 # class MedicoListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     

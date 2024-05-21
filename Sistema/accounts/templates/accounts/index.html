@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% load static %}
 
 {% block title %}
 Minha Conta | {{ block.super }}
@@ -9,31 +10,31 @@ Minha Conta | {{ block.super }}
     <li><a href="{% url 'accounts:index'%}">Início</a></li>
     <li class="active">Minha Conta</li>
 </ol>
-<div class="row">
-    <div>
-        <div class="list-group">
-            <ul>
-                <li><a href="{% url 'accounts:index'%}">Minha Conta</a></li>
-                <li><a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a></li>
-                <li><a href="{% url 'accounts:update_password'%}">Alterar Senha</a></li>
-                <li><a href="{% url 'clientes:cliente_atualizar'%}"> Dados Complementares </a></li>
-                <li><a href="">Minhas Consultas</a></li>
-                {% if request.user.is_staff or request.user.is_superuser %}
-                <li><a href="">Agendas</a></li>
-                <li><a href="">Medicos</a></li>
-                <li><a href="">Especialidade</a></li>
-                <li><a href="">planos</a></li>
-                <li><a href="">convenios</a></li>
-                <li><a href="">convenios</a></li>
-                {% endif %}
-                <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
-                
-            </ul>
-        </div>
-        <div>
-            {% block accounts_seccion %}
-            <p>Bem vindo, {{ user }} </p>
-            {% endblock %}
-        </div>
+<div class="menu-conta">
+
+    <div class="list-group">
+        <ul>
+            <li><a href="{% url 'accounts:index'%}">Minha Conta</a></li>
+            <li><a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a></li>
+            <li><a href="{% url 'accounts:update_password'%}">Alterar Senha</a></li>
+            <li><a href="{% url 'clientes:cliente_atualizar'%}"> Dados Complementares </a></li>
+            <li><a href="">Minhas Consultas</a></li>
+            {% if request.user.is_staff or request.user.is_superuser %}
+            <li><a href="">Agendas</a></li>
+            <li><a href="">Medicos</a></li>
+            <li><a href="">Especialidade</a></li>
+            <li><a href="">planos</a></li>
+            <li><a href="">convenios</a></li>
+            <li><a href="">convenios</a></li>
+            {% endif %}
+            <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
+
+        </ul>
     </div>
-    {% endblock %}
+    <div>
+        {% block accounts_seccion %}
+        <p>Bem vindo, {{ user }} </p>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
