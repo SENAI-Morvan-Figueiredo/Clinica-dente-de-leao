@@ -19,7 +19,8 @@ class User(AbstractBaseUser, PermissionsMixin):
                     ' para identificá-lo de forma única na plataforma.'
     )
 
-    name = models.CharField(verbose_name='Nome', max_length=200)
+    name = models.CharField(verbose_name='Nome', max_length=30)
+    last_name = models.CharField(verbose_name='Sobremone', max_length=200)
     email = models.EmailField(verbose_name='Email', unique=True)
     is_staff = models.BooleanField(verbose_name='is', default=False)
     is_active = models.BooleanField(verbose_name='Está Ativo', default=True)

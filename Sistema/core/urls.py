@@ -9,6 +9,6 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # path('funcionarios/', include('funcionarios.urls', namespace= 'funcionarios')),
-    # path('clientes/', include(('clientes.urls', 'clientes'), namespace= 'clientes')),
+    path('clientes/', include(('clientes.urls', 'clientes'), namespace= 'clientes')),
     path('contas/', include(('accounts.urls', 'accounts'), namespace= 'accounts')),
 ]

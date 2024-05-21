@@ -1,8 +1,8 @@
 from django.db import models
 from django.conf import settings
+from django.core.validators import RegexValidator
 from django_cpf_cnpj.fields import CPFField, CNPJField
 from django.db.models.fields.related import ManyToManyField, OneToOneField, ForeignKey
-
 
 class Convenio(models.Model):
     convenio = models.CharField('Convenio', max_length=200)
@@ -22,8 +22,7 @@ class ServicoPlano(models.Model):
 
 class Cliente(models.Model):
 
-    nome = models.CharField('Nome', max_length=200)
-    cpf = CPFField(masked=True)
+    cpf = CPFField(verbose_name="CPF",masked=True)
     
     GENERO = (
         ("MAS", "Masculino"),
@@ -31,7 +30,15 @@ class Cliente(models.Model):
         ("OTR", "Outro"),
     )
     
-    genero = models.CharField(max_length=9, choices=GENERO)
+    genero = models.CharField(verbose_name="Genero", max_length=9, choices=GENERO)
+    
+    phone_regex = RegexValidator(
+        regex=r'^\+?1?\d{9,15}$',
+        message="O número precisa estar neste formato: \
+                        '+99 99 9999-0000'."
+    )
+    telefone = models.CharField(verbose_name="Telefone", validators=[phone_regex],max_length=17, null=True, blank=True)
+    
     
     convenio = ForeignKey(Convenio, on_delete=models.CASCADE, related_name='clientes')
     plano = ForeignKey(PlanoConvenio, on_delete=models.CASCADE, related_name='clientes')
@@ -44,7 +51,7 @@ class Cliente(models.Model):
     unidade_federal = models.CharField('Unidade Federal', max_length=2)
     
     data_nacimento = models.DateField('Data de Nacimento')
-    data_inicio = models.DateField('Data de Inicio')
+    data_inicio = models.DateField('Data de Inicio', auto_now_add=True)
     
     is_ativo = models.BooleanField('Está ativo', default=True)
     user = models.OneToOneField(

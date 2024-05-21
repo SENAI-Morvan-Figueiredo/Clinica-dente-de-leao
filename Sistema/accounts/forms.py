@@ -6,7 +6,7 @@ class UserAdminCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'name', 'email']
+        fields = ['username', 'name', 'last_name', 'email']
 
 class UserAdminForm(forms.ModelForm):
 

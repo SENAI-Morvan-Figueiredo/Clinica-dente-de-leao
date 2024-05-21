@@ -9,9 +9,15 @@ from django.db.models.fields.related import OneToOneField, ForeignKey
 
 class Funcionario(models.Model):
 
-    nome = models.CharField('Nome', max_length=200)
     cpf = CPFField(masked=True)
     genero = models.CharField('Genero', max_length=30)
+    
+    phone_regex = RegexValidator(
+        regex=r'^\+?1?\d{9,15}$',
+        message="O número precisa estar neste formato: \
+                        '+99 99 9999-0000'."
+    )
+    telefone = models.CharField(verbose_name="Telefone", validators=[phone_regex],max_length=17, null=True, blank=True)
     
     cep = models.CharField('CEP', max_length=9)
     rua = models.CharField('Rua', max_length=200)
