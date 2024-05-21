@@ -8,9 +8,12 @@
 
 {% block conteudo %}
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div>
         <div class="page-header">
             <h1>Cadastro</h1>
+        </div>
+        <div>
+          <a href="{% url 'index' %}">Inicio</a>
         </div>
         <form class="form-horizontal" method="post">
             {% csrf_token %}
