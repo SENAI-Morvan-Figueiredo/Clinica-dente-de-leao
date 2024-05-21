@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.validators import RegexValidator
 from django_cpf_cnpj.fields import CPFField, CNPJField
 from django.db.models.fields.related import ManyToManyField, OneToOneField, ForeignKey
+from funcionarios.models import Agenda
 
 class Convenio(models.Model):
     convenio = models.CharField('Convenio', max_length=200)
@@ -62,3 +63,7 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f'{self.nome}'
+    
+class Consulta(models.Model):
+    agenda =  OneToOneField(Agenda, on_delete=models.CASCADE, related_name='consulta')
+    cliente = ForeignKey(Cliente, on_delete=models.CASCADE, related_name='consulta')
