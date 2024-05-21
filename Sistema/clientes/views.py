@@ -8,12 +8,14 @@ from .models import Cliente
 from .forms import ClienteViewForm
 
 
+cliente_fields = ['cpf', 'genero', 'telefone', 'convenio', 'plano', 'cep', 'rua', 'numero', 'complemento', 'municipio', 'unidade_federal', 'data_nacimento']
+
 class ClienteCreateView(LoginRequiredMixin ,CreateView):
     
     model = Cliente
     template_name = 'clientes/cadastro.html'
     # form_class = ClienteViewForm
-    fields = ['cpf', 'genero', 'telefone', 'convenio', 'plano', 'cep', 'rua', 'numero', 'complemento', 'municipio', 'unidade_federal', 'data_nacimento']
+    fields = cliente_fields
     success_url = reverse_lazy('index')
     
     def form_valid(self, form):
@@ -25,7 +27,7 @@ class ClienteUpdateView(LoginRequiredMixin, UpdateView):
     model = Cliente
     login_url = reverse_lazy('accounts:login')
     template_name = 'accounts/update_user.html'
-    fields = ['sexo', 'telefone', 'cpf']
+    fields = cliente_fields
     success_url = reverse_lazy('accounts:index')
 
     def get_object(self):
@@ -105,7 +107,7 @@ class ClienteUpdateView(LoginRequiredMixin, UpdateView):
 
 
 cliente_cadastro = ClienteCreateView.as_view()
-# cliente_atualizar = ClienteUpdateView.as_view()
+cliente_atualizar = ClienteUpdateView.as_view()
 # consulta_lista = ConsultaListView.as_view()
 # consulta_cadastro = ConsultaCreateView.as_view()
 # consulta_atualizar = ConsultaUpdateView.as_view()

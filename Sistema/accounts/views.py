@@ -28,7 +28,7 @@ class RegisterView(CreateView):
     model = User
     template_name = 'accounts/singup.html'
     form_class = UserAdminCreationForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('clientes:cliente_cadastro')
     
     def form_valid(self, form):
         messages.info(
