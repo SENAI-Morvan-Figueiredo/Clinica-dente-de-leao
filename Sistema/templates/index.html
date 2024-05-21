@@ -8,10 +8,14 @@
     <div>
         <a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a>
         <a id="logout" href="{% url 'accounts:logout' %}">Sair</a>
-        {% if user.is_staff %}
-        <a id="cadatro" href="">cadastro-teste</a>
-        {% else %}
-        <a id="cadatro" href="{% url 'clientes:cliente_cadastro' %}">cadastro</a>
+        <a id="consultas" href="">Minhas Consultas</a>
+        {% if user.is_staff or user.is_superuser %}
+        <a href="">Agendas</a>
+        <a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a>
+        <a href="">Medicos</a>
+        <a href="">Especialidade</a>
+        {% elif user.is_superuser %}
+        <a href="">cadastrar usuarios</a>
         {% endif %}
     </div>
 </div>

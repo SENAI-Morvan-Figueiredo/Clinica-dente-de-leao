@@ -4,11 +4,24 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Cliente
+from .models import *
 from .forms import ClienteViewForm
 
 
-cliente_fields = ['cpf', 'genero', 'telefone', 'convenio', 'plano', 'cep', 'rua', 'numero', 'complemento', 'municipio', 'unidade_federal', 'data_nacimento']
+cliente_fields = [
+    'cpf',
+    'genero',
+    'telefone',
+    # 'convenio',
+    # 'plano',
+    'cep',
+    'rua',
+    'numero',
+    'complemento',
+    'municipio',
+    'unidade_federal',
+    'data_nacimento'
+    ]
 
 class ClienteCreateView(LoginRequiredMixin ,CreateView):
     
@@ -37,6 +50,18 @@ class ClienteUpdateView(LoginRequiredMixin, UpdateView):
         except Cliente.DoesNotExist:
             return None
         
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+class ConvenioCreateView(LoginRequiredMixin ,CreateView):
+    
+    model = Convenio
+    template_name = 'clientes/cadastro.html'
+    # form_class = ClienteViewForm
+    fields = cliente_fields
+    success_url = reverse_lazy('index')
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
