@@ -28,7 +28,7 @@ class RegisterView(CreateView):
     model = User
     template_name = 'accounts/singup.html'
     form_class = UserAdminCreationForm
-    success_url = reverse_lazy('clientes:cliente_cadastro')
+    success_url = reverse_lazy('contas/entrar/')
     
     def form_valid(self, form):
         messages.info(
@@ -41,7 +41,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     model = User
     login_url = reverse_lazy('accounts:login')
     template_name = 'accounts/update_user.html'
-    fields = ['name', 'email']
+    fields = ['name', 'last_name', 'email',]
     success_url = reverse_lazy('accounts:index')
 
     def get_object(self):
