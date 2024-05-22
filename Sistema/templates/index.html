@@ -11,21 +11,16 @@
             <li><a id="logout" href="{% url 'accounts:logout' %}">Sair</a></li>
             <li><a id="consultas" href="">Minhas Consultas</a></li>
         </ul>
-        {% if user.is_staff or user.is_superuser %}
+        {% if user.is_staff %}
         <ul>
             <li><a href="">Agendas</a></li>
             <li><a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a></li>
             <li><a href="">Medicos</a></li>
             <li><a href="">Especialidade</a></li>
-            {% elif user.is_superuser %}
+            {% if user.is_superuser %}
             <li><a href="{% url 'accounts:singup' %}">Cadastrar usuarios</a></li>
             {% endif %}
-        </ul>
-        
-        
-        
-       
-        </ul>
+        {% endif %}
     </div>
 </div>
 {% else %}

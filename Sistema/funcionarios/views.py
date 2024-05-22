@@ -36,7 +36,19 @@ class FuncionarioCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
         'data_nacimento',
         'is_medico',
     ]
-    success_url = reverse_lazy('index')
+    if Funcionario.is_medico == 1:
+        success_url = reverse_lazy('funcionarios:medico_cadastro')
+    else:
+        success_url = reverse_lazy('index')
+
+class FuncionarioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+    
+    login_url = 'accounts:login'
+    template_name = 'medicos/medicos_list.html'
+
+    def get_queryset(self):
+        return Medico.objects.all().order_by('-pk')
+    
 
 class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
@@ -114,7 +126,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 #         return Agenda.objects.filter().order_by('-pk')
 
 funcionario_cadastro = FuncionarioCreateView.as_view()
-# medico_cadastro = MedicoCreateView.as_view()
+medico_cadastro = MedicoCreateView.as_view()
 # medico_lista = MedicoListView.as_view()
 # especialidade_cadastro = EspecialidadeCreateView.as_view()
 # especialidade_lista = EspecialidadeListView.as_view()
