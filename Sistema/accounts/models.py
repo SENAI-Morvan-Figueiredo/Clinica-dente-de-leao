@@ -3,7 +3,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 
-# Create your models here.
+
 class User(AbstractBaseUser, PermissionsMixin):
     
     username = models.CharField(

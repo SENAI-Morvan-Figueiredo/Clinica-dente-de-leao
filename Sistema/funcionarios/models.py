@@ -9,9 +9,17 @@ from django.db.models.fields.related import OneToOneField, ForeignKey
 
 class Funcionario(models.Model):
     
-    # nome = models.ForeignKey(verbose_name='Nome', on_delete=models.CASCADE)
+    name = models.CharField(verbose_name='Nome', max_length=30)
+    last_name = models.CharField(verbose_name='Sobremone', max_length=200)
+    
     cpf = CPFField(verbose_name="CPF", max_length=50, unique=True, masked=True)
-    genero = models.CharField('Genero', max_length=30)
+    GENERO = (
+        ("MAS", "Masculino"),
+        ("FEM", "Feminino"),
+        ("OTR", "Outro"),
+    )
+    
+    genero = models.CharField(verbose_name="Genero", max_length=9, choices=GENERO)
     
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
@@ -39,7 +47,7 @@ class Funcionario(models.Model):
     )
 
     def __str__(self):
-        return f'{self.nome}'
+        return f'{self.cpf}'
     
 
 class Especialidade(models.Model):

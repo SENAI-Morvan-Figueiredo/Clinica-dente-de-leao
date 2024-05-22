@@ -34,7 +34,8 @@ class FuncionarioCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
         'municipio',
         'unidade_federal',
         'data_nacimento',
-        'is_medico',
+        'data_contratacao',
+        'is_medico'
     ]
     if Funcionario.is_medico == 1:
         success_url = reverse_lazy('funcionarios:medico_cadastro')
@@ -61,7 +62,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 # class MedicoListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
 #     login_url = 'accounts:login'
-#     template_name = 'medicos/medicos_list.html'
+#     template_name = 'funcionarios/medicos_list.html'
 
 #     def get_queryset(self):
 #         return Medico.objects.all().order_by('-pk')
@@ -70,14 +71,14 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
 #     model = Especialidade
 #     login_url = 'accounts:login'
-#     template_name = 'medicos/cadastro.html'
+#     template_name = 'funcionarios/cadastro.html'
 #     fields = ['nome',]
 #     success_url = reverse_lazy('medicos:especialidade_lista')
     
 # class EspecialidadeListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
 #     login_url = 'accounts:login'
-#     template_name = 'medicos/especialidade_list.html'
+#     template_name = 'funcionarios/especialidade_list.html'
 
 #     def get_queryset(self):
 #         return Especialidade.objects.all().order_by('-pk')
@@ -87,7 +88,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
 #     model = Agenda
 #     login_url = 'accounts:login'
-#     template_name = 'medicos/agenda_cadastro.html'
+#     template_name = 'funcionarios/agenda_cadastro.html'
 #     fields = ['medico', 'dia', 'horario']
 #     success_url = reverse_lazy('medicos:agenda_lista')
     
@@ -124,6 +125,8 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
 #     def get_queryset(self):
 #         return Agenda.objects.filter().order_by('-pk')
+
+
 
 funcionario_cadastro = FuncionarioCreateView.as_view()
 funionarios_lista = FuncionarioListView.as_view()

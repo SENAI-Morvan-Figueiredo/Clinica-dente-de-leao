@@ -12,8 +12,8 @@ cliente_fields = [
     'cpf',
     'genero',
     'telefone',
-    # 'convenio',
-    # 'plano',
+    'convenio',
+    'plano',
     'cep',
     'rua',
     'numero',
@@ -34,6 +34,9 @@ class ClienteCreateView(LoginRequiredMixin ,CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+    def get_endereco(self):
+        pass
     
 class ClienteUpdateView(LoginRequiredMixin, UpdateView):
 

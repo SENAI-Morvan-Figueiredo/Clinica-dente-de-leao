@@ -8,20 +8,35 @@ from funcionarios.models import Agenda
 class Convenio(models.Model):
     convenio = models.CharField('Convenio', max_length=200)
     cnpj = CNPJField(masked=True)
+    
+    def __str__(self):
+        return f'{self.convenio}'
 
 class ServicoCoberto(models.Model):
     servico = models.CharField('Serviços', max_length=200)
     descricao = models.CharField('Descrição', max_length=1000)
+    
+    def __str__(self):
+        return f'{self.servico}'
 
 class PlanoConvenio(models.Model):
     plano = models.CharField('Plano', max_length=30)
     convenio = ForeignKey(Convenio, on_delete=models.CASCADE, related_name='plano_convenio')
+    
+    def __str__(self):
+        return f'{self.plano}-{self.convenio}'
 
 class ServicoPlano(models.Model):
     servico = ManyToManyField(ServicoCoberto, related_name='serviço_plano')
     plano = ManyToManyField(PlanoConvenio, related_name='servico_plano')
+    
+    def __str__(self):
+        return f'{self.servico}-{self.plano}'
 
 class Cliente(models.Model):
+    
+    name = models.CharField(verbose_name='Nome', max_length=30)
+    last_name = models.CharField(verbose_name='Sobremone', max_length=200)
 
     cpf = CPFField(verbose_name="CPF", max_length=50, unique=True,)
     
@@ -67,3 +82,6 @@ class Cliente(models.Model):
 class Consulta(models.Model):
     agenda =  OneToOneField(Agenda, on_delete=models.CASCADE, related_name='consulta')
     cliente = ForeignKey(Cliente, on_delete=models.CASCADE, related_name='consulta')
+    
+    def __str__(self):
+        return f'{self.agenda}-{self.cliente}'

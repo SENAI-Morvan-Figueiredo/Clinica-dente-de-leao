@@ -5,6 +5,7 @@ urlpatterns = [
     path('registro/funcionarios/', views.funcionario_cadastro, name='funcionario_cadastro'),
     path('registro/funcionarios/medico/', views.medico_cadastro, name='medico_cadastro'),
     path('admin/lista/funcionarios/', views.funionarios_lista, name='funcionarios_lista'),
+    
     # path('registro/especialidade/', views.especialidade_cadastro, name='especialidade_cadastro'),
     # path('agendar/', views.agenda_cadastro, name='agendar_consulta'),
     # path('agendar/atualizar/<int:pk>/', views.agenda_atualizar, name='agendar_consulta_atualizar'),
