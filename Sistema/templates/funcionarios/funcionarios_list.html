@@ -1,0 +1,53 @@
+{% extends "accounts/index.html" %}
+
+{% block title %}
+    Funcionarios
+{% endblock %}
+
+{% block accounts_seccion %}
+<h2>Funcionarios</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Genero</th>
+            <th>Rua</th>
+            <th>Numero</th>
+            <th>Complemento</th>
+            <th>Municipio</th>
+            <th>UF</th>
+            <th>Data De Nacimento</th>
+            <th>Data De Contratação</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for funcionario in object_list %}
+        <tr>
+            <td><a href=""># {{ funcionario.pk }}</a></td>
+
+            <td>{{ funcionario.nome }}</td>
+            <td>{{ funcionario.email }}</td>
+            <td>{{ funcionario.cpf }}</td>
+            <td>{{ funcionario.telefone }}</td>
+            <td>{{ funcionario.genero }}</td>
+            <td>{{ funcionario.telefone }}</td>
+            <td>{{ funcionario.cep }}</td>
+            <td>{{ funcionario.rua }}</td>
+            <td>{{ funcionario.numero }}</td>
+            <td>{{ funcionario.complemento }}</td>
+            <td>{{ funcionario.municipio }}</td>
+            <td>{{ funcionario.unidade_federal  }}</td>
+            <td>{{ funcionario.data_nacimento }}</td>
+            {% comment %} <td>{{ funcionario.data_contratacao }}</td> {% endcomment %}
+            <td>{{ funcionario.is_medico }}</td>
+            <td>{{ funcionario.is_ativo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -23,7 +23,7 @@ class ServicoPlano(models.Model):
 
 class Cliente(models.Model):
 
-    cpf = CPFField(verbose_name="CPF",masked=True)
+    cpf = CPFField(verbose_name="CPF", max_length=50, unique=True,)
     
     GENERO = (
         ("MAS", "Masculino"),

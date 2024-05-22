@@ -8,8 +8,9 @@ from django.core.exceptions import ValidationError
 from django.db.models.fields.related import OneToOneField, ForeignKey
 
 class Funcionario(models.Model):
-
-    cpf = CPFField(masked=True)
+    
+    # nome = models.ForeignKey(verbose_name='Nome', on_delete=models.CASCADE)
+    cpf = CPFField(verbose_name="CPF", max_length=50, unique=True, masked=True)
     genero = models.CharField('Genero', max_length=30)
     
     phone_regex = RegexValidator(

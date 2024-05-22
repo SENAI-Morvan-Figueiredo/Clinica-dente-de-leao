@@ -44,7 +44,7 @@ class FuncionarioCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 class FuncionarioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'medicos/medicos_list.html'
+    template_name = 'funcionarios/funcionarios_list.html'
 
     def get_queryset(self):
         return Medico.objects.all().order_by('-pk')
@@ -126,10 +126,14 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 #         return Agenda.objects.filter().order_by('-pk')
 
 funcionario_cadastro = FuncionarioCreateView.as_view()
+funionarios_lista = FuncionarioListView.as_view()
+
 medico_cadastro = MedicoCreateView.as_view()
 # medico_lista = MedicoListView.as_view()
+
 # especialidade_cadastro = EspecialidadeCreateView.as_view()
 # especialidade_lista = EspecialidadeListView.as_view()
+
 # agenda_cadastro = AgendaCreateView.as_view()
 # agenda_atualizar = AgendaUpdateView.as_view()
 # agenda_lista = AgendaListView.as_view()

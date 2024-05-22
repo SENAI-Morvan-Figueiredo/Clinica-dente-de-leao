@@ -9,25 +9,28 @@
         <ul>
             <li><a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a></li>
             <li><a id="logout" href="{% url 'accounts:logout' %}">Sair</a></li>
-            <li><a id="consultas" href="">Minhas Consultas</a></li>
         </ul>
-        {% if user.is_staff %}
         <ul>
+            <li><a id="consultas" href="">Minhas Consultas</a></li>
+            {% if user.is_staff %}
             <li><a href="">Agendas</a></li>
             <li><a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a></li>
             <li><a href="">Medicos</a></li>
             <li><a href="">Especialidade</a></li>
-            {% if user.is_superuser %}
+            <li><a href="{% url 'accounts:singup' %}">Cadastrar Funcionarios</a></li>
+                {% if user.is_superuser%}
             <li><a href="{% url 'accounts:singup' %}">Cadastrar usuarios</a></li>
+                {% endif %}
             {% endif %}
-        {% endif %}
     </div>
 </div>
 {% else %}
 <div id="secao-cadastre-se-login--homepage--nao-logado">
+    <ul>
+        <li><a id="login-redirect" href="{% url 'accounts:login' %}">login</a></li>
+        <li><a id="singup-redirect" href="{% url 'accounts:singup' %}">Cadastre-se!</a> </li>
+    </ul>
     
-    <a id="login-redirect" href="{% url 'accounts:login' %}">login</a>
-    <a id="singup-redirect" href="{% url 'accounts:singup' %}">Cadastre-se!</a>
 </div>
 {% endif %}
 
