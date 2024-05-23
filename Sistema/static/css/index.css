@@ -1,18 +1,10 @@
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column nowrap;
-    border: solid 3px red;
+    padding: 5px 10px;
+    /* background-color: ; */
 }
 
-
-#header h1{
+.nome-clinica{
     margin-bottom: 5px;
-}
-
-#header h3{
-    margin-top: 0px;
 }
 
 #header{
@@ -21,7 +13,8 @@ body{
 
 
 
-#secao-login input{
+
+#secao-login {
     margin: 5px;
 }
 

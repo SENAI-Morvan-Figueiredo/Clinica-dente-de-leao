@@ -12,18 +12,20 @@
     <title>{% block titulo %} Dente de Leão {% endblock %}</title>
 </head>
 <body>
-    <header id="header">
-        <div id="header--nome-clinica">
-            <h1>Dente de Leão</h1>
-            <h3>Clinica Odontologica</h3>
+    <main>
+        <header id="header">
+            <div id="header--nome-clinica">
+                <h1 class="nome-clinica">Dente de Leão</h1>
+                <h3 class="nome-clinica">Clinica Odontologica</h3>
+            </div>
+        </header>
+        
+        <div id="index-redirect">
+            <a href="{% url 'index'%}">Voltar ao inicio</a> 
         </div>
-    </header>
 
-    <div id="index-redirect">
-        <a href="{% url 'index'%}">Voltar ao inicio</a> 
-    </div>
-    {% block conteudo %}{% endblock %}
-    
-    {% block scripts %}{% endblock %}
+        {% block conteudo %}{% endblock %}
+        
+    </main>
 </body>
 </html>
