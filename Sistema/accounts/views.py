@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, View, UpdateView, FormView, DetailView
-from .forms import UserAdminCreationForm
+from .forms import *
 
 
 class IndexView(View):
@@ -41,7 +41,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     model = User
     login_url = reverse_lazy('accounts:login')
     template_name = 'accounts/update_user.html'
-    fields = ['name', 'last_name', 'email',]
+    form_class = UserUpdadeForm
     success_url = reverse_lazy('accounts:index')
 
     def get_object(self):

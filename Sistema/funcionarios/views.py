@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Funcionario,Medico, Agenda, Especialidade
+from .froms import *
 
 
 class TestMixinIsAdmin(UserPassesTestMixin):
@@ -23,24 +24,12 @@ class FuncionarioCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
     model = Funcionario
     login_url = 'accounts:login'
     template_name = 'funcionarios/cadastro.html'
-    fields = [
-        'cpf',
-        'genero',
-        'telefone',
-        'cep',
-        'rua',
-        'numero',
-        'complemento',
-        'municipio',
-        'unidade_federal',
-        'data_nacimento',
-        'data_contratacao',
-        'is_medico'
-    ]
+    form_class = FuncionarioCreateForm
+    
     if Funcionario.is_medico == 1:
-        success_url = reverse_lazy('funcionarios:medico_cadastro')
+        success_url = reverse_lazy('funcionarios:medico_cadastro') 
     else:
-        success_url = reverse_lazy('index')
+        success_url = reverse_lazy('funcionarios:funcionarios_lista')
 
 class FuncionarioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
@@ -56,16 +45,16 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
     model = Medico
     login_url = 'accounts:login'
     template_name = 'funcionarios/cadastro.html'
-    fields = ['nome', 'crm', 'email', 'telefone', 'especialidade']
-    success_url = reverse_lazy('medicos:medicos_lista')
+    form_class = MedicoCreateForm
+    success_url = reverse_lazy('funcionarios:medicos_lista')
     
-# class MedicoListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+class MedicoListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
-#     login_url = 'accounts:login'
-#     template_name = 'funcionarios/medicos_list.html'
+    login_url = 'accounts:login'
+    template_name = 'funcionarios/medicos_list.html'
 
-#     def get_queryset(self):
-#         return Medico.objects.all().order_by('-pk')
+    def get_queryset(self):
+        return Medico.objects.all().order_by('-pk')
     
 # class EspecialidadeCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
@@ -73,7 +62,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 #     login_url = 'accounts:login'
 #     template_name = 'funcionarios/cadastro.html'
 #     fields = ['nome',]
-#     success_url = reverse_lazy('medicos:especialidade_lista')
+#     success_url = reverse_lazy('funcionarios:especialidade_lista')
     
 # class EspecialidadeListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
@@ -90,7 +79,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 #     login_url = 'accounts:login'
 #     template_name = 'funcionarios/agenda_cadastro.html'
 #     fields = ['medico', 'dia', 'horario']
-#     success_url = reverse_lazy('medicos:agenda_lista')
+#     success_url = reverse_lazy('funcionarios:agenda_lista')
     
 #     def form_valid(self, form):
 #         form.instance.user = self.request.user
@@ -102,7 +91,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 #     login_url = 'accounts:login'
 #     template_name = 'medicos/agenda_cadastro.html'
 #     fields = ['medico', 'dia', 'horario']
-#     success_url = reverse_lazy('medicos:agenda_lista')
+#     success_url = reverse_lazy('funcionarios:agenda_lista')
     
 #     def form_valid(self, form):
 #         form.instance.user = self.request.user

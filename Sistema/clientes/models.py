@@ -35,8 +35,8 @@ class ServicoPlano(models.Model):
 
 class Cliente(models.Model):
     
-    name = models.CharField(verbose_name='Nome', max_length=30)
-    last_name = models.CharField(verbose_name='Sobremone', max_length=200)
+    nome = models.CharField(verbose_name='Nome', max_length=30)
+    sobrenome = models.CharField(verbose_name='Sobremone', max_length=200)
 
     cpf = CPFField(verbose_name="CPF", max_length=50, unique=True,)
     
