@@ -3,32 +3,30 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import *
-from .forms import ClienteViewForm
+from .forms import *
 
 
-cliente_fields = [
-    'cpf',
-    'genero',
-    'telefone',
-    'convenio',
-    'plano',
-    'cep',
-    'rua',
-    'numero',
-    'complemento',
-    'municipio',
-    'unidade_federal',
-    'data_nacimento'
-    ]
+# cliente_fields = [ 'cpf', 'genero', 'telefone', 'convenio', 'plano', 'cep', 'rua', 'numero', 'complemento', 'municipio', 'unidade_federal', 'data_nacimento']
+
+class TestMixinIsAdmin(UserPassesTestMixin):
+    def test_func(self):
+        is_admin_or_is_staff = self.request.user.is_superuser or \
+            self.request.user.is_staff
+        return bool(is_admin_or_is_staff)
+
+    def handle_no_permission(self):
+        messages.error(
+            self.request, "Você não tem permissões!"
+        )
+        return redirect("accounts:index")
 
 class ClienteCreateView(LoginRequiredMixin ,CreateView):
     
     model = Cliente
     template_name = 'clientes/cadastro.html'
-    form_class = ClienteViewForm
-    # fields = cliente_fields
+    form_class = ClienteForm
     success_url = reverse_lazy('index')
     
     def form_valid(self, form):
@@ -43,8 +41,7 @@ class ClienteUpdateView(LoginRequiredMixin, UpdateView):
     model = Cliente
     login_url = reverse_lazy('accounts:login')
     template_name = 'accounts/update_user.html'
-    form_class = ClienteViewForm
-    # fields = cliente_fields
+    form_class = ClienteForm
     success_url = reverse_lazy('accounts:index')
 
     def get_object(self):
@@ -62,14 +59,35 @@ class ConvenioCreateView(LoginRequiredMixin ,CreateView):
     
     model = Convenio
     template_name = 'clientes/cadastro.html'
-    # form_class = ClienteViewForm
-    fields = cliente_fields
+    form_class = ConvenioForm
     success_url = reverse_lazy('index')
+    # success_url = reverse_lazy('clientes:cadastro_plano')
+
     
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
         
+class PlanoCreateView(LoginRequiredMixin ,CreateView):
+    
+    model = Convenio
+    template_name = 'clientes/cadastro.html'
+    form_class = PlanoForm
+    success_url = reverse_lazy('index')
+    # success_url = reverse_lazy('clientes:cadastro_planos')
+
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+class ConevioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+    
+    login_url = 'accounts:login'
+    template_name = 'medicos/medicos_list.html'
+
+    def get_queryset(self):
+        return Convenio.objects.all().order_by('-pk')
 
 # class ConsultaCreateView(LoginRequiredMixin, CreateView):
 
@@ -137,6 +155,7 @@ class ConvenioCreateView(LoginRequiredMixin ,CreateView):
 
 cliente_cadastro = ClienteCreateView.as_view()
 cliente_atualizar = ClienteUpdateView.as_view()
+convenio_cadatrar = ConvenioCreateView.as_view()
 # consulta_lista = ConsultaListView.as_view()
 # consulta_cadastro = ConsultaCreateView.as_view()
 # consulta_atualizar = ConsultaUpdateView.as_view()
