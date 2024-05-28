@@ -9,6 +9,10 @@ urlpatterns = [
     
     path('cadatro/convenio/', views.cliente_atualizar, name='convenio_cadatro'),
     path('cadatro/convenio/plano', views.cliente_atualizar, name='convenio_cadatro'),
+    path('admin/lista/convenio', views.convenio_lista, name='convenio_lista'),
+    path('admin/lista/convenio/plano', views.plano_lista, name='plano_lista'),
+    
+    
     
     # path('consultas/', views.consulta_lista, name='consulta_list'),
     # path('consultas/criar/', views.consulta_cadastro, name='consulta_create'),

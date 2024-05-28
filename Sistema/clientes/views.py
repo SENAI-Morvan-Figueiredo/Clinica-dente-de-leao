@@ -1,14 +1,13 @@
-from django.views.generic import CreateView, UpdateView, ListView, DeleteView
+from django.db import IntegrityError
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.db import IntegrityError
+from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from .models import *
 from .forms import *
 
-
-# cliente_fields = [ 'cpf', 'genero', 'telefone', 'convenio', 'plano', 'cep', 'rua', 'numero', 'complemento', 'municipio', 'unidade_federal', 'data_nacimento']
 
 class TestMixinIsAdmin(UserPassesTestMixin):
     def test_func(self):
@@ -81,13 +80,19 @@ class PlanoCreateView(LoginRequiredMixin ,CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
-class ConevioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+class ConveioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'medicos/medicos_list.html'
+    template_name = 'medicos/lista.html'
+    
 
     def get_queryset(self):
         return Convenio.objects.all().order_by('-pk')
+    
+class PlanosListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+    
+    login_url = 'accounts:login'
+    template_name = 'medicos/lista.html'
 
 # class ConsultaCreateView(LoginRequiredMixin, CreateView):
 
@@ -156,6 +161,7 @@ class ConevioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
 cliente_cadastro = ClienteCreateView.as_view()
 cliente_atualizar = ClienteUpdateView.as_view()
 convenio_cadatrar = ConvenioCreateView.as_view()
+convenio_lista = ConveioListView.as_view()
 # consulta_lista = ConsultaListView.as_view()
 # consulta_cadastro = ConsultaCreateView.as_view()
 # consulta_atualizar = ConsultaUpdateView.as_view()
