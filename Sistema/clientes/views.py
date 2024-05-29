@@ -93,6 +93,9 @@ class PlanosListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
     template_name = 'medicos/lista.html'
+    
+    def get_queryset(self, request):
+        return Convenio.objects.filter(request).order_by('-pk')
 
 # class ConsultaCreateView(LoginRequiredMixin, CreateView):
 
@@ -162,6 +165,7 @@ cliente_cadastro = ClienteCreateView.as_view()
 cliente_atualizar = ClienteUpdateView.as_view()
 convenio_cadatrar = ConvenioCreateView.as_view()
 convenio_lista = ConveioListView.as_view()
+plano_lista = PlanosListView.as_view()
 # consulta_lista = ConsultaListView.as_view()
 # consulta_cadastro = ConsultaCreateView.as_view()
 # consulta_atualizar = ConsultaUpdateView.as_view()
