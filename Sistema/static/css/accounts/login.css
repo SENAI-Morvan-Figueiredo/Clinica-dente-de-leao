@@ -1,26 +1,3 @@
-#header h1{
-    margin-bottom: 5px;
-}
-
-#header h3{
-    margin-top: 0px;
-}
-
-#header{
-    text-align: center;
-}
-
-
-#secao-login input{
-    margin: 5px;
-}
-
-.menu-conta{
-    display: flex;
-    justify-content: space-evenly;
-    flex-flow: column nowrap;
-
-}
 
 
 

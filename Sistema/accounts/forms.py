@@ -21,9 +21,7 @@ class UserAdminForm(forms.ModelForm):
         fields = ['username', 'email', 'is_active', 'is_staff']
 
 class UserUpdadeForm(forms.Form):
+        
     class Meta:
         model = User
-        if User.is_superuser or User.is_staff:
-            fields = ['username', 'name', 'last_name', 'email', 'is_staff', 'is_superuser']
-        else:
-            fields = ['username', 'name', 'last_name', 'email'] 
+        fields = UserAdminCreationForm.Meta.fields

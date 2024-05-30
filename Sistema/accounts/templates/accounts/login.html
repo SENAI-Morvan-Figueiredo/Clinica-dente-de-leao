@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block titulo %}
 Entrar | {{ block.super }}
 {% endblock %}
@@ -8,28 +10,97 @@ Entrar | {{ block.super }}
 
 {% block conteudo %}
 
-<div id="login-titulo">
-    <h1>Entrar</h1>
+{% comment %} <div class="main-login">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+            <h1>Entrar</h1>
+            {% for error in form.non_field_errors %}
+            <div class='alert alert-danger'>
+                {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+        <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <div class="form-group {% if form.username.errors %} has-error {% endif %}">
+                    <label for="{{form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label_tag
+                        }}</label>
+                    <div class="col-md-9">
+                        {% render_field form.username class='form-control' placeholder='Usuário'%}
+                        {% for error in form.username.errors %}
+                        <span class='help-block'>{{error}}</span>
+                        {%endfor%}
+                    </div>
+                </div>
+                <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+                    <label for="{{form.password.auto_id}}id_email" class="col-md-3 control-label">{{
+                        form.password.label_tag }}</label>
+                    <div class="col-md-9">
+                        {% render_field form.password class="form-control" placeholder="Senha" %}
+                        {% for error in form.password.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div> {% endcomment %}
+
+<div class="main-login">
+
+    <!--------------------------/Card Sobreposto do Login/-------------------------->
+    <div class=" right-login">
+        <!--------------------------/Imagem e Titulo do Login/-------------------------->
+        <div class="left-login">
+            <h1>Faça Login e descubra o que podemos fazer por você</h1>
+        </div>
+        <div class="card-login">
+            <h1>LOGIN</h1>
+            <!--/E-mail/-->
+            <form class="textfield" method="post">
+                {% csrf_token %}
+                <label for="email">E-mail / Usuário</label>
+                {% render_field form.username id="email" placeholder='Usuário' %}
+                {% for error in form.username.errors %}
+                <span class='help-block'>{{error}}</span>
+                {%endfor%}
+
+                <!--/Senha/-->
+                <label for="senha">Senha</label>
+                {% render_field form.password id="senha" placeholder="Senha" %}
+                {% for error in form.password.errors %}
+                <span class="help-block">{{ error }}</span>
+                {% endfor %}
+                <div>
+                    <!------------------------------/Esqueceu a Senha/------------------------------>
+                    <div class="Esqueceu-Senha">
+                        <a href="#" class="esqueceu-a-senha">Esqueceu a
+                            senha?</a>
+                    </div>
+                    <div class="cadastro1">
+                        <p>Não tem cadastro?</p>
+                        <div class="cadastro2">
+                            <a href="{% url 'accounts:singup' %}">Clique aqui</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- <button type="submit">Entrar</button> -->
+                    <button type="submit" class="bnt-login">Entrar</button>
+                </div>
+            </form>
+            <!--------------------------------/Botão Login/--------------------------------->
+        </div>
+    </div>
 </div>
 
-<div id="secao-login">
-    <form method="post">
-        {% csrf_token %}
-        <fieldset>
-            <div>
-                <label id="login--usuario-label" for="login--usuario-input">Usuario:</label>
-                <input id="login--usuario-input" type="text" name='username'>
-            </div>
-            <div>
-                <label id="login--senha-label" for="login--senha-imput">Senha:</label>
-                <input id="login--senha-imput" type="password" name='password'>
-            </div>
-
-            <a id="singin--login-page" href="{% url 'accounts:singup' %}">Cadastre-se</a>
-
-            <button id="login--btn-enviar" type="submit">Entrar</button>
-        </fieldset>
-    </form>
-</div>
+{% block navbar %}{% endblock %}
 
 {% endblock %}

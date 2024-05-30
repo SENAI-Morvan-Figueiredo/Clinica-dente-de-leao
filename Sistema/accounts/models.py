@@ -44,5 +44,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         return f'{self.name} {self.last_name}'
 
     def get_short_name(self):
-        return str(self).split(' ')[0]
+        return str(self).split('')[0]
 

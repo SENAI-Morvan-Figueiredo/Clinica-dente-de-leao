@@ -25,11 +25,7 @@
     </div>
 </div>
 {% else %}
-<div id="secao--nao-logado">
-    <ul>
-        <li><a id="login-redirect" href="{% url 'accounts:login' %}">login</a></li>
-        <li><a id="singup-redirect" href="{% url 'accounts:singup' %}">Cadastre-se!</a> </li>
-    </ul>
+<div id="nao-logado">
     {% comment %} <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -99,9 +95,6 @@
     </div> {% endcomment %}
 
 
-    <header data-bs-theme="dark">
-
-    </header>
 
     <main>
 
@@ -162,90 +155,130 @@
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span> {% endcomment %}
+                <span class="visually-hidden">Next</span> 
+                
             </button>
+            {% endcomment %}
         </div>
 
-
-        <!-- Marketing messaging and featurettes
-    ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-
         <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://cdn-icons-png.flaticon.com/512/1957/1957362.png" role="img"
+                        aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                    <h2 class="fw-normal">Clínico Geral</h2>
+                    <p>São realizados os tratamentos mais simples, como consultas preventivas, limpezas, remoção de
+                        tártaro, entre outros procedimentos.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://png.pngtree.com/png-vector/20191016/ourlarge/pngtree-dentist-stomatology-tooth-implant-vector-icon-png-image_1804158.jpg"
+                        role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                    <h2 class="fw-normal">Implantodontia</h2>
+                    <p>Os implantes são utilizados nos casos em que os outros dentes não estão comprometidos, auxiliando
+                        na recuperação da mastigação e fala, além de melhorar a estética, trazendo uma maior autoestima
+                        ao paciente.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://static.vecteezy.com/ti/vetor-gratis/p3/20271283-dental-ponte-linha-icone-ortodontico-dentes-implantar-linear-pictograma-oral-cuidado-estomatologia-protese-odontologia-esboco-simbolo-dental-tratamento-placa-editavel-avc-isolado-ilustracao-vetor.jpg"
+                        role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                    <h2 class="fw-normal">Prótese Dentária</h2>
+                    <p>Reconstrução e reposição dos dentes danificados ou perdidos. O uso de próteses influencia
+                        positivamente a mastigação, dicção e estética do paciente</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtELX64j5LG3-FcJ7bOf4jj2rg-6IuipWj0g&s"
+                        role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                    <h2 class="fw-normal">Dentística</h2>
+                    <p>Área responsável por proporcionar um sorriso mais harmonioso, com dentes brancos e alinhados. A
+                        tecnologia por trás dos procedimentos estéticos já possibilita que esse tipo de tratamento seja
+                        acessível a todos.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://www.clinicadentalaltea.com/images/ico/odontopediatria.svg" role="img"
+                        aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                    <h2 class="fw-normal">Odontopediatria</h2>
+                    <p>Mesmo durante a dentição de leite, elas já estão suscetíveis a cáries e outros problemas, por
+                        isso é preciso visitar um profissional.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://static.vecteezy.com/ti/vetor-gratis/p1/20487099-suspensorios-dentes-linha-icone-ortodontia-bracadeira-dente-cuidado-e-medico-mandibula-correcao-linear-pictograma-odontologia-esboco-simbolo-dental-tratamento-placa-editavel-avc-isolado-ilustracao-vetor.jpg"
+                        role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                    <h2 class="fw-normal">Ortodontia</h2>
+                    <p>Por meio do uso de aparelhos dentários, os pacientes de todas as idades podem corrigir o
+                        posicionamento dos dentes e ossos faciais, tornando o sorriso mais harmônico e funcional.</p>
+                </div>
+            </div>
 
-            <!-- Three columns of text below the carousel -->
-            <div class="row">
-              <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://cdn-icons-png.flaticon.com/512/1957/1957362.png" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                <h2 class="fw-normal">Clínico Geral</h2>
-                <p>São realizados os tratamentos mais simples, como consultas preventivas, limpezas, remoção de tártaro, entre outros procedimentos.</p>
-              </div><!-- /.col-lg-4 -->
-              <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://png.pngtree.com/png-vector/20191016/ourlarge/pngtree-dentist-stomatology-tooth-implant-vector-icon-png-image_1804158.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                <h2 class="fw-normal">Implantodontia</h2>
-                <p>Os implantes são utilizados nos casos em que os outros dentes não estão comprometidos, auxiliando na recuperação da mastigação e fala, além de melhorar a estética, trazendo uma maior autoestima ao paciente.</p>
-              </div><!-- /.col-lg-4 -->
-              <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://static.vecteezy.com/ti/vetor-gratis/p3/20271283-dental-ponte-linha-icone-ortodontico-dentes-implantar-linear-pictograma-oral-cuidado-estomatologia-protese-odontologia-esboco-simbolo-dental-tratamento-placa-editavel-avc-isolado-ilustracao-vetor.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                <h2 class="fw-normal">Prótese Dentária</h2>
-                <p>Reconstrução e reposição dos dentes danificados ou perdidos. O uso de próteses influencia positivamente a mastigação, dicção e estética do paciente</p>
-              </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-            <div class="row">
-              <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtELX64j5LG3-FcJ7bOf4jj2rg-6IuipWj0g&s" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                <h2 class="fw-normal">Dentística</h2>
-                <p>Área responsável por proporcionar um sorriso mais harmonioso, com dentes brancos e alinhados. A tecnologia por trás dos procedimentos estéticos já possibilita que esse tipo de tratamento seja acessível a todos.</p>
-              </div><!-- /.col-lg-4 -->
-              <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://www.clinicadentalaltea.com/images/ico/odontopediatria.svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                <h2 class="fw-normal">Odontopediatria</h2>
-                <p>Mesmo durante a dentição de leite, elas já estão suscetíveis a cáries e outros problemas, por isso é preciso visitar um profissional.</p>
-              </div><!-- /.col-lg-4 -->
-              <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://static.vecteezy.com/ti/vetor-gratis/p1/20487099-suspensorios-dentes-linha-icone-ortodontia-bracadeira-dente-cuidado-e-medico-mandibula-correcao-linear-pictograma-odontologia-esboco-simbolo-dental-tratamento-placa-editavel-avc-isolado-ilustracao-vetor.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                <h2 class="fw-normal">Ortodontia</h2>
-                <p>Por meio do uso de aparelhos dentários, os pacientes de todas as idades podem corrigir o posicionamento dos dentes e ossos faciais, tornando o sorriso mais harmônico e funcional.</p>
-              </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-        
-        
-            <!-- START THE FEATURETTES -->
-        
             <hr class="featurette-divider">
-        
+
             <div class="row featurette">
-              <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">Informação do paciente. </h2>
-                <p class="lead">Saiba como se preparar para uma consulta conosco e o que você pode esperar durante a consulta e o tratamento. Verifique nossas perguntas frequentes para obter mais informações e aprender sobre os planos de pagamento flexíveis que oferecemos.
-                </p>
-              </div>
-              <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://rodrigoalmada.com.br/wp-content/uploads/2020/06/dentista-de-confianca.jpg" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/>
-              </div>
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Informação do paciente. </h2>
+                    <p class="lead">Saiba como se preparar para uma consulta conosco e o que você pode esperar durante a
+                        consulta e o tratamento. Verifique nossas perguntas frequentes para obter mais informações e
+                        aprender sobre os planos de pagamento flexíveis que oferecemos.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500"
+                        src="https://rodrigoalmada.com.br/wp-content/uploads/2020/06/dentista-de-confianca.jpg"
+                        aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                </div>
             </div>
-        
+
             <hr class="featurette-divider">
-        
+
             <div class="row featurette">
-              <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading fw-normal lh-1">Para médicos solicitantes.        </h2>
-                <p class="lead">Agradecemos a confiança demonstrada pelos GPs quando nos permitem cuidar de seus pacientes. Orgulhamo-nos de nos comunicar com o médico e profissional de saúde que nos indicou antes e depois de atendermos o paciente.</p>
-              </div>
-              <div class="col-md-5 order-md-1">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://www.codental.com.br/blog/wp-content/uploads/2021/05/agenda-de-dentista.jpg" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/>
-              </div>
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Para médicos solicitantes. </h2>
+                    <p class="lead">Agradecemos a confiança demonstrada pelos GPs quando nos permitem cuidar de seus
+                        pacientes. Orgulhamo-nos de nos comunicar com o médico e profissional de saúde que nos indicou
+                        antes e depois de atendermos o paciente.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500"
+                        src="https://www.codental.com.br/blog/wp-content/uploads/2021/05/agenda-de-dentista.jpg"
+                        aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                </div>
             </div>
-        
+
             <hr class="featurette-divider">
-        
+
             <div class="row featurette">
-              <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">Precisa de opções de pagamento?</h2>
-                <p class="lead">Oferecemos planos de pagamento flexíveis para quaisquer procedimentos cirúrgicos na Clínica Dente de Leão. Isso significa menos tempo se preocupando e mais tempo para se concentrar no que é realmente importante – você.</p>
-              </div>
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Precisa de opções de pagamento?</h2>
+                    <p class="lead">Oferecemos planos de pagamento flexíveis para quaisquer procedimentos cirúrgicos na
+                        Clínica Dente de Leão. Isso significa menos tempo se preocupando e mais tempo para se concentrar
+                        no que é realmente importante – você.</p>
+                </div>
             </div>
-        
+
             <hr class="featurette-divider">
         </div>
     </main>

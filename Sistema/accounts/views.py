@@ -20,7 +20,7 @@ class Login(LoginView):
     
 def logout(request):
     auth.logout(request)
-    return render(request, 'accounts/logged_out.html')
+    return render(request, 'index.html')
 
 
 class RegisterView(CreateView):
@@ -41,7 +41,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     model = User
     login_url = reverse_lazy('accounts:login')
     template_name = 'accounts/update_user.html'
-    form_class = UserUpdadeForm
+    fields = ['username', 'name', 'last_name', 'email'] 
     success_url = reverse_lazy('accounts:index')
 
     def get_object(self):
