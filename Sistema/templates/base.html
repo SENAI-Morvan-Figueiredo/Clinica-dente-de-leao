@@ -22,9 +22,9 @@
 
     <title>{% block titulo %} Dente de Leão {% endblock %}</title>
 </head>
-<body>
+<body style="margin: none;">
 {% block navbar %}
-    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+    <nav class="navbar navbar-dark fixed-top bg-dark" aria-label="Dark offcanvas navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'index'%}">Clinica Dente de Leão</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"

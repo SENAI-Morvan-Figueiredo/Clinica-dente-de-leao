@@ -83,5 +83,8 @@ class Consulta(models.Model):
     agenda =  OneToOneField(Agenda, on_delete=models.CASCADE, related_name='consulta')
     cliente = ForeignKey(Cliente, on_delete=models.CASCADE, related_name='consulta')
     
+    class Meta:
+        unique_together = ('agenda', 'cliente')
+        
     def __str__(self):
-        return f'{self.agenda}-{self.cliente}'
+        return f'{self.agenda} - {self.cliente}'

@@ -56,16 +56,17 @@ Entrar | {{ block.super }}
 <div class="main-login">
 
     <!--------------------------/Card Sobreposto do Login/-------------------------->
-    <div class=" right-login">
+    <div class="right-login">
         <!--------------------------/Imagem e Titulo do Login/-------------------------->
         <div class="left-login">
-            <h1>Faça Login e descubra o que podemos fazer por você</h1>
+            <h1>Faça login e descubra o que podemos fazer por você</h1>
         </div>
         <div class="card-login">
             <h1>LOGIN</h1>
             <!--/E-mail/-->
             <form class="textfield" method="post">
                 {% csrf_token %}
+                
                 <label for="email">E-mail / Usuário</label>
                 {% render_field form.username id="email" placeholder='Usuário' %}
                 {% for error in form.username.errors %}
@@ -91,16 +92,18 @@ Entrar | {{ block.super }}
                         </div>
                     </div>
                 </div>
-                <div>
-                    <!-- <button type="submit">Entrar</button> -->
+                <div class="btn-login-conteiner">
+                    <!--------------------------------/Botão Login/--------------------------------->
+                    
                     <button type="submit" class="bnt-login">Entrar</button>
                 </div>
             </form>
-            <!--------------------------------/Botão Login/--------------------------------->
         </div>
     </div>
 </div>
 
 {% block navbar %}{% endblock %}
+
+{% block footer %}{% endblock %}
 
 {% endblock %}

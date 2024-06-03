@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 
 {% block conteudo %}
 
@@ -7,11 +9,39 @@
     <p>bem-vindo, {{ request.user }}.</p>
     <div>
         <ul>
-            <li><a id="singup-redirect" href="{% url 'accounts:index' %}">Minha Conta</a></li>
-            <li><a id="logout" href="{% url 'accounts:logout' %}">Sair</a></li>
-        </ul>
-        <ul>
             <li><a id="consultas" href="">Minhas Consultas</a></li>
+            <ul>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope='col'>ID</th>
+                            <th scope='col'>Medico</th>
+                            <th scope='col'>Dia</th>
+                            <th scope='col'>Horario</th>
+                            <th scope='col'>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for consulta in object_list %}
+                        <tr>
+                            <th scope='row' ><a href=""># {{ consulta.pk }}</a></td>
+                            <td>{{ consulta.agenda.medico }}</td>
+                            <td>{{ consulta.agenda.dia|date:"d/m/Y" }}</td>
+                            <td>{{ consulta.agenda.get_horario_display }}</td>
+                            <td>
+                                <a href="{% url 'medicos:agendar_consulta_atualizar' consulta.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'medicos:agendar_consulta_deletar' consulta.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </ul>
             {% if user.is_staff %}
             <li><a href="">Agendas</a></li>
             <li><a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a></li>
