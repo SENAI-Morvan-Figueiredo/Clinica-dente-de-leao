@@ -129,26 +129,26 @@ class ConsultaCreateView(LoginRequiredMixin, CreateView):
         messages.info(self.request, 'Consulta marcada com sucesso!')
         return HttpResponseRedirect(reverse_lazy('clientes:consulta_list'))
     
-# class ConsultaUpdateView(LoginRequiredMixin, UpdateView):
+class ConsultaUpdateView(LoginRequiredMixin, UpdateView):
 
-#     model = Consulta
-#     login_url = 'accounts:login'
-#     template_name = 'clientes/cadastro.html'
-#     fields = ['agenda']
-#     success_url = reverse_lazy('medicos:Consulta_lista')
+    model = Consulta
+    login_url = 'accounts:login'
+    template_name = 'clientes/cadastro.html'
+    fields = ['agenda']
+    success_url = reverse_lazy('clientes:consulta_lista')
     
-#     def form_valid(self, form):
-#         form.instance.cliente = Cliente.objects.get(user=self.request.user)
-#         return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.cliente = Cliente.objects.get(user=self.request.user)
+        return super().form_valid(form)
     
-# class ConsultaDeleteView(LoginRequiredMixin, DeleteView):
-#     model = Consulta
-#     success_url = reverse_lazy('clientes:consulta_list')
-#     template_name = 'form_delete.html'
+class ConsultaDeleteView(LoginRequiredMixin, DeleteView):
+    model = Consulta
+    success_url = reverse_lazy('clientes:consulta_list')
+    template_name = 'form_delete.html'
 
-#     def get_success_url(self):
-#         messages.success(self.request, "Consulta excluída com sucesso!")
-#         return reverse_lazy('clientes:consulta_list')
+    def get_success_url(self):
+        messages.success(self.request, "Consulta excluída com sucesso!")
+        return reverse_lazy('clientes:consulta_list')
 
 
 class ConsultaListView(LoginRequiredMixin, ListView):
@@ -181,5 +181,5 @@ plano_lista = PlanosListView.as_view()
 
 consulta_cadastro = ConsultaCreateView.as_view()
 consulta_lista = ConsultaListView.as_view()
-# consulta_atualizar = ConsultaUpdateView.as_view()
-# consulta_excluir = ConsultaDeleteView.as_view()
+consulta_atualizar = ConsultaUpdateView.as_view()
+consulta_excluir = ConsultaDeleteView.as_view()

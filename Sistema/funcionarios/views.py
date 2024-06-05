@@ -34,7 +34,7 @@ class FuncionarioCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 class FuncionarioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'funcionarios/funcionarios_list.html'
+    template_name = 'funcionarios/funcionario_lista.html'
 
     def get_queryset(self):
         return Medico.objects.all().order_by('-pk')
@@ -73,17 +73,17 @@ class MedicoListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
 #         return Especialidade.objects.all().order_by('-pk')
 
 
-# class AgendaCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
+class AgendaCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
-#     model = Agenda
-#     login_url = 'accounts:login'
-#     template_name = 'funcionarios/agenda_cadastro.html'
-#     fields = ['medico', 'dia', 'horario']
-#     success_url = reverse_lazy('funcionarios:agenda_lista')
+    model = Agenda
+    login_url = 'accounts:login'
+    template_name = 'funcionarios/agenda_cadastro.html'
+    fields = ['medico', 'dia', 'horario']
+    success_url = reverse_lazy('funcionarios:agenda_lista')
     
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
     
 # class AgendaUpdateView(LoginRequiredMixin, TestMixinIsAdmin, UpdateView):
 
@@ -107,13 +107,13 @@ class MedicoListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
 #         return reverse_lazy('medicos:agenda_lista')
 
 
-# class AgendaListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+class AgendaListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
-#     login_url = 'accounts:login'
-#     template_name = 'medicos/agenda_list.html'
+    login_url = 'accounts:login'
+    template_name = 'funcionarios/agenda_lista.html'
 
-#     def get_queryset(self):
-#         return Agenda.objects.filter().order_by('-pk')
+    def get_queryset(self):
+        return Agenda.objects.filter().order_by('-pk')
 
 
 
@@ -126,8 +126,8 @@ medico_cadastro = MedicoCreateView.as_view()
 # especialidade_cadastro = EspecialidadeCreateView.as_view()
 # especialidade_lista = EspecialidadeListView.as_view()
 
-# agenda_cadastro = AgendaCreateView.as_view()
+agenda_cadastro = AgendaCreateView.as_view()
 # agenda_atualizar = AgendaUpdateView.as_view()
-# agenda_lista = AgendaListView.as_view()
+agenda_lista = AgendaListView.as_view()
 # agenda_deletar = AgendaDeleteView.as_view()
 
