@@ -17,12 +17,12 @@
             {% if request.user.is_staff or request.user.is_superuser %}
             <a href="{% url 'funcionarios:agenda_lista'%}" class="list-group-item">Agendas</a>
             <a href="{% url 'funcionarios:funcionario_lista'%}" class="list-group-item">Funcionarios</a>
-            <a href="" class="list-group-item">Medicos <span class="badge bg-warning">Manutenção</span></a>
-            <a href="" class="list-group-item">Especialidade <span class="badge bg-warning">Manutenção</span></a>
+            <a href="{% url 'funcionarios:medico_lista'%}" class="list-group-item">Medicos</a>
+            <a href="{% url 'funcionarios:especialidade_lista'%}" class="list-group-item">Especialidade</a>
             <a href="" class="list-group-item">Convenios <span class="badge bg-warning">Manutenção</span></a>
             <a href="" class="list-group-item">Planos <span class="badge bg-warning">Manutenção</span></a>
             <a href="" class="list-group-item">Serviços <span class="badge bg-warning">Manutenção</span></a>
-            <a href="{% url 'clientes:cliente_lista'%}" class="list-group-item">Clientes</a>
+            <a href="{% url 'clientes:cliente_lista'%}" class="list-group-item">Clientes <span class="badge bg-warning">Manutenção</span></a>
             <a href="" class="list-group-item">Usuarios <span class="badge bg-warning">Manutenção</span></a>
             {% endif %}
         </div>

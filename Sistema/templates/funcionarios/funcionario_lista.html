@@ -7,7 +7,7 @@
 {% block index_conteudo %}
 <<div class="d-flex justify-content-between p-2">
     <h2>Lista de Funcionarios</h2>
-    <a class="btn btn-outline-secondary" href="{% url 'clientes:consulta_cadastro'%}">Cadastrar Nova Consulta</a></span>
+    <a class="btn btn-outline-secondary" href="{% url 'funcionarios:funcionario_cadastro'%}">Cadastrar Funcionario</a></span>
 </div>
 <table class="table table-bordered">
     <thead>
@@ -20,14 +20,7 @@
             <th>Telefone</th>
             <th>Genero</th>
             <th>CEP</th>
-            {% comment %} <th>Rua</th> {% endcomment %}
-            {% comment %} <th>Numero</th> {% endcomment %}
-            {% comment %} <th>Complemento</th> {% endcomment %}
-            {% comment %} <th>Municipio</th> {% endcomment %}
-            {% comment %} <th>UF</th> {% endcomment %}
             <th>Data De Nacimento</th>
-            {% comment %} <th>Data De Contratação</th> {% endcomment %}
-            {% comment %} <th>É Medico?</th> {% endcomment %}
             <th>Status</th>
         </tr>
     </thead>
@@ -42,14 +35,7 @@
             <td>{{ funcionario.telefone }}</td>
             <td>{{ funcionario.genero }}</td>
             <td>{{ funcionario.cep }}</td>
-            {% comment %} <td>{{ funcionario.rua }}</td> {% endcomment %}
-            {% comment %} <td>{{ funcionario.numero }}</td> {% endcomment %}
-            {% comment %} <td>{{ funcionario.complemento }}</td> {% endcomment %}
-            {% comment %} <td>{{ funcionario.municipio }}</td> {% endcomment %}
-            {% comment %} <td>{{ funcionario.unidade_federal  }}</td> {% endcomment %}
             <td>{{ funcionario.data_nacimento }}</td>
-            {% comment %} <td>{{ funcionario.data_contratacao }}</td> {% endcomment %}
-            {% comment %} <td>{{ funcionario.is_medico }}</td> {% endcomment %}
             <td>{{ funcionario.is_ativo }}</td>
         </tr>
         {% endfor %}
