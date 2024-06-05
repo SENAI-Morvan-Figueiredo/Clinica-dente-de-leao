@@ -54,6 +54,14 @@ class ClienteUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
+class ClienteListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+    model = Cliente
+    login_url = 'accounts:login'
+    template_name = 'clientes/cliente_lista.html'
+
+    def get_queryset(self):
+        return self.model.objects.all().order_by('-pk')
+    
 class ConvenioCreateView(LoginRequiredMixin ,CreateView):
     
     model = Convenio
@@ -69,7 +77,7 @@ class ConvenioCreateView(LoginRequiredMixin ,CreateView):
         
 class PlanoCreateView(LoginRequiredMixin ,CreateView):
     
-    model = Convenio
+    model = PlanoConvenio
     template_name = 'clientes/cadastro.html'
     form_class = PlanoForm
     success_url = reverse_lazy('index')
@@ -83,8 +91,7 @@ class PlanoCreateView(LoginRequiredMixin ,CreateView):
 class ConveioListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'medicos/lista.html'
-    
+    template_name = 'clientes/convenio_lista.html'
 
     def get_queryset(self):
         return Convenio.objects.all().order_by('-pk')
@@ -163,9 +170,12 @@ class PlanosListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
 
 cliente_cadastro = ClienteCreateView.as_view()
 cliente_atualizar = ClienteUpdateView.as_view()
+cliente_lista = ClienteListView.as_view()
+
 convenio_cadatrar = ConvenioCreateView.as_view()
 convenio_lista = ConveioListView.as_view()
 plano_lista = PlanosListView.as_view()
+
 # consulta_lista = ConsultaListView.as_view()
 # consulta_cadastro = ConsultaCreateView.as_view()
 # consulta_atualizar = ConsultaUpdateView.as_view()

@@ -5,76 +5,55 @@
 {% block conteudo %}
 
 {% if user.is_authenticated %}
-<div class="homepage-logado">
-    <p>bem-vindo, {{ request.user }}.</p>
-    <div>
-        <ul>
-            <li><a id="consultas" href="">Minhas Consultas</a></li>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope='col'>ID</th>
-                            <th scope='col'>Medico</th>
-                            <th scope='col'>Dia</th>
-                            <th scope='col'>Horario</th>
-                            <th scope='col'>Opções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for consulta in object_list %}
-                        <tr>
-                            <th scope='row' ><a href=""># {{ consulta.pk }}</a></td>
-                            <td>{{ consulta.agenda.medico }}</td>
-                            <td>{{ consulta.agenda.dia|date:"d/m/Y" }}</td>
-                            <td>{{ consulta.agenda.get_horario_display }}</td>
-                            <td>
-                                <a href="{% url 'medicos:agendar_consulta_atualizar' consulta.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="{% url 'medicos:agendar_consulta_deletar' consulta.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                
-            </ul>
-            {% if user.is_staff %}
-            <li><a href="">Agendas</a></li>
-            <li><a href="{% url 'funcionarios:funcionario_cadastro'%}">Funcionarios</a></li>
-            <li><a href="">Medicos</a></li>
-            <li><a href="">Especialidade</a></li>
-            <li><a href="{% url 'accounts:singup' %}">Cadastrar Funcionarios</a></li>
-            {% if user.is_superuser%}
-            <li><a href="{% url 'accounts:singup' %}">Cadastrar usuarios</a></li>
+<ol class="breadcrumb">
+    <li><a href="{% url 'accounts:index'%}">Início</a></li>
+    <li class="active">Minha Conta</li>
+</ol>
+<div class="row">
+    <div class="col-md-4">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">Minha Conta</a>
+            <a href="{% url 'accounts:update_user'%}" class="list-group-item">Alterar Nome e Email</a>
+            <a href="{% url 'accounts:update_password'%}" class="list-group-item">Alterar Senha</a>
+            <a href="{% url 'clientes:cliente_atualizar'%}" class="list-group-item"> Dados Complementares </a>
+            <a href="" class="list-group-item">Minhas Consultas</a>
+            {% if request.user.is_staff or request.user.is_superuser %}
+            <a href="" class="list-group-item">Agendas</a>
+            <a href="" class="list-group-item">Medicos</a>
+            <a href="{% url 'clientes:cliente_lista'%}" class="list-group-item">Clientes</a>
+            <a href="" class="list-group-item">Especialidade</a>
             {% endif %}
-            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-8">
+        {% block index_conteudo %}
+        <p>Bem vindo, {{ user }} </p>
+        {% endblock %}
+
     </div>
 </div>
 {% else %}
 <div id="nao-logado">
     <main>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-                    </svg>
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h1>Example headline.</h1>
-                            <p class="opacity-75">Some representative placeholder content for the first slide of the
-                                carousel.</p>
-                            <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:singup' %}">Sign up today</a>
-                            </p>
-                        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1>Example headline.</h1>
+                        <p class="opacity-75">Some representative placeholder content for the first slide of the
+                            carousel.</p>
+                        <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:singup' %}">Sign up today</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <div class="container marketing">
             <div class="row">
@@ -197,6 +176,7 @@
             <hr class="featurette-divider">
         </div>
     </main>
+</div>
 </div>
 {% endif %}
 

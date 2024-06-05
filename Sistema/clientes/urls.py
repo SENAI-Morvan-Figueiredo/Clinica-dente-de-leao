@@ -6,11 +6,13 @@ app_name = 'clientes'
 urlpatterns = [
     path('registrar/dados-complementares/', views.cliente_cadastro, name='cliente_cadastro'),
     path('atualizar/', views.cliente_atualizar, name='cliente_atualizar'),
+    path('lista/clientes', views.cliente_lista, name='cliente_lista'),
+    
     
     path('cadatro/convenio/', views.cliente_atualizar, name='convenio_cadatro'),
     path('cadatro/convenio/plano', views.cliente_atualizar, name='convenio_cadatro'),
-    path('admin/lista/convenio', views.convenio_lista, name='convenio_lista'),
-    path('admin/lista/convenio/plano', views.plano_lista, name='plano_lista'),
+    path('lista/convenio', views.convenio_lista, name='convenio_lista'),
+    path('lista/convenio/plano', views.plano_lista, name='plano_lista'),
     
     
     

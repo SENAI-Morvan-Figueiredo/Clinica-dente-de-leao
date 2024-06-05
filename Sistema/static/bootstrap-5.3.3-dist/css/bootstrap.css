@@ -194,7 +194,8 @@
 }
 
 body {
-  margin-top: 3rem;
+  margin: 2rem 1rem;
+  padding-top: 2rem;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);

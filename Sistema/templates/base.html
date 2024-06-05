@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="{% static 'css/accounts/login/style.css' %}" media="screen">
   <link rel="stylesheet" href="{% static 'css/accounts/login/register.css' %}" media="screen">
   <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.css' %}" media="screen">
+  <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.css.map' %}" media="screen">
+  <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/custom.css' %}" media="screen">
+  
+  {% block estilizacao %}{% endblock %}
 
   <title>{% block titulo %} Dente de Leão {% endblock %}</title>
 </head>
@@ -102,9 +106,9 @@
   </nav>
 
   {% endblock %}
-  <div class="container margin-top">
+  
   {% block conteudo %}{% endblock %}
-  </div>
+  
 
   {% block footer %}
   <!-- FOOTER -->
