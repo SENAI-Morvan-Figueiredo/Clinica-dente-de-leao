@@ -15,9 +15,9 @@ urlpatterns = [
     path('lista/convenio/plano', views.plano_lista, name='plano_lista'),
     
     
+    path('consultas/criar/', views.consulta_cadastro, name='consulta_cadastro'),
+    path('consultas/', views.consulta_lista, name='consulta_lista'),
     
-    # path('consultas/', views.consulta_lista, name='consulta_list'),
-    # path('consultas/criar/', views.consulta_cadastro, name='consulta_create'),
     # path('consultas/editar/<int:pk>/', views.consulta_atualizar, name='consulta_update'),
     # path('consultas/excluir/<int:pk>/', views.consulta_excluir, name='consulta_delete'),
 ]

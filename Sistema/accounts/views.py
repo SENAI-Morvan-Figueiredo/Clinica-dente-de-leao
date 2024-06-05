@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.urls import reverse_lazy
 from django.contrib import messages, auth
@@ -34,6 +34,7 @@ class RegisterView(CreateView):
         messages.info(
             self.request, "Cadastro realizado com sucesso! Faça seu login."
         )
+        
         return super().form_valid(form)
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):

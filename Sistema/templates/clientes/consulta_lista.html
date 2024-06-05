@@ -1,0 +1,45 @@
+{%extends 'index.html'%}
+
+{% load widget_tweaks %}
+
+{% block title %}
+Lista de Clientes
+{% endblock %}
+
+{% block index_conteudo %}
+<div>
+    <h2 class="float-start">Lista de Cnsultas</h2>
+    <a type="button" class="btn col-md-2 float-end" href="{% url 'clientes:consulta_cadastro'%}">Cadastrar Nova Consulta</a>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Medico</th>
+      <th>Dia</th>
+      <th>Horario</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for consulta in object_list %}
+    <tr>
+      <th><a href=""># {{ cliente.pk }}</a></td>
+      <td>{{ consulta.agenda.medico }}</td>
+      <td>{{ consulta.agenda.dia|date:"d/m/Y" }}</td>
+      <td>{{ consulta.agenda.get_horario_display }}</td>
+      <td>
+        <a href="" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+            <i class="fas fa-edit"></i>
+        </a>
+        <a href="" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

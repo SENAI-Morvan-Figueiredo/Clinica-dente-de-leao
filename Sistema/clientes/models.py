@@ -3,7 +3,8 @@ from django.conf import settings
 from django.core.validators import RegexValidator
 from django_cpf_cnpj.fields import CPFField, CNPJField
 from django.db.models.fields.related import ManyToManyField, OneToOneField, ForeignKey
-from funcionarios.models import Agenda
+from funcionarios.models import *
+from accounts.models import *
 
 class Convenio(models.Model):
     convenio = models.CharField('Convenio', max_length=200)

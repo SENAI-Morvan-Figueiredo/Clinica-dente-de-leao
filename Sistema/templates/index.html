@@ -6,10 +6,6 @@
 
 {% if user.is_authenticated %}
 
-<ol class="breadcrumb">
-    <li><a href="{% url 'accounts:index'%}">Início</a></li>
-    <li class="active">Minha Conta</li>
-</ol>
 <div class="row">
     <div class="col-md-4">
         <div class="list-group">
@@ -17,7 +13,7 @@
             <a href="{% url 'accounts:update_user'%}" class="list-group-item">Alterar Nome e Email</a>
             <a href="{% url 'accounts:update_password'%}" class="list-group-item">Alterar Senha</a>
             <a href="{% url 'clientes:cliente_atualizar'%}" class="list-group-item"> Dados Complementares </a>
-            <a href="" class="list-group-item">Minhas Consultas</a>
+            <a href="{% url 'clientes:consulta_lista'%}" class="list-group-item">Minhas Consultas</a>
             {% if request.user.is_staff or request.user.is_superuser %}
             <a href="" class="list-group-item">Agendas</a>
             <a href="" class="list-group-item">Medicos</a>
@@ -26,11 +22,10 @@
             {% endif %}
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 rounded">
         {% block index_conteudo %}
         <p>Bem vindo, {{ user }} </p>
         {% endblock %}
-
     </div>
 </div>
 {% else %}
