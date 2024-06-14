@@ -6,34 +6,19 @@ Minha Conta | {{ block.super }}
 {% endblock%}
 
 {% block conteudo %}
-<ol>
-    <li><a href="{% url 'accounts:index'%}">Início</a></li>
-    <li class="active">Minha Conta</li>
-</ol>
-<div class="menu-conta">
-
+<div class="container">
     <div class="list-group">
         <ul>
-            <li><a href="{% url 'accounts:index'%}">Minha Conta</a></li>
-            <li><a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a></li>
-            <li><a href="{% url 'accounts:update_password'%}">Alterar Senha</a></li>
-            <li><a href="{% url 'clientes:cliente_atualizar'%}"> Dados Complementares </a></li>
-            <li><a href="">Minhas Consultas</a></li>
-            {% if request.user.is_staff or request.user.is_superuser %}
-            <li><a href="{% url 'funcionarios:funcionarios_lista' %}">Funcionarios</a></li>
-            <li><a href="">Agendas</a></li>
-            <li><a href="">Medicos</a></li>
-            <li><a href="">Especialidade</a></li>
-            <li><a href="">planos</a></li>
-            <li><a href="">convenios</a></li>
-            {% endif %}
-            <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
-
+            <li class="list-item"><a href="{% url 'accounts:index'%}">Minha Conta</a></li>
+            <li class="list-item"><a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a></li>
+            <li class="list-item"><a href="{% url 'accounts:update_password'%}">Alterar Senha</a></li>
+            <li class="list-item"><a href="{% url 'clientes:cliente_atualizar'%}"> Dados Complementares </a></li>
+            <li class="list-item"><a href="{% url 'accounts:logout' %}">Sair</a></li>
         </ul>
     </div>
-    <div>
-        {% block index_conteudo %}
-        <p>Bem vindo, {{ user }} </p>
+    <div class="container">
+        {% block conta_conteudo %}
+        <h1>Bem vindo, {{ user }} </h1>
         {% endblock %}
     </div>
 </div>

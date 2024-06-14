@@ -1,4 +1,4 @@
-{%extends 'index.html'%}
+{%extends 'base.html'%}
 
 {% load widget_tweaks %}
 
@@ -6,7 +6,7 @@
 Consultas
 {% endblock %}
 
-{% block index_conteudo %}
+{% block conteudo %}
 <div class="d-flex justify-content-between p-2">
     <h2>Lista de Consultas</h2>
     <a class="btn btn-outline-secondary" href="{% url 'clientes:consulta_cadastro'%}">Cadastrar Nova Consulta</a></span>

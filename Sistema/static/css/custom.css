@@ -157,6 +157,10 @@ textarea.form-control {
     flex-flow: column nowrap;
 }
 
+.flex-flow-row{
+    flex-flow: row nowrap;
+}
+
 /* .form-control{
     max-width: 40rem;
 } */
@@ -189,4 +193,9 @@ textarea.form-control {
 
 .form-imput{
     width: 100%;
+}
+
+.index-img{
+    width: 100%;
+    height: auto;
 }

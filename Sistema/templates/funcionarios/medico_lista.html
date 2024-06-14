@@ -1,11 +1,11 @@
 {% extends "index.html" %}
 
 {% block title %}
-    Medicos
+Medicos
 {% endblock %}
 
-{% block index_conteudo %}
-<<div class="d-flex justify-content-between p-2">
+{% block conteudo %}
+<div class="d-flex justify-content-between p-2">
     <h2>Lista de Medicos</h2>
     <a class="btn btn-outline-secondary" href="{% url 'funcionarios:medico_cadastro'%}">Cadastrar Medico</a></span>
 </div>
@@ -28,7 +28,7 @@
             <th><a href=""># {{ medico.pk }}</a></th>
             <td>{{ medico.funcionario.user.name }}</td>
             <td>{{ medico.funcionario.user.last_name }}</td>
-            <td>{{ medico.crm }}</td> 
+            <td>{{ medico.crm }}</td>
             <td>{{ medico.especialidade }}</td>
             <td>{{ medico.telefone }}</td>
             {% if user.is_staff or user.is_superuser %}

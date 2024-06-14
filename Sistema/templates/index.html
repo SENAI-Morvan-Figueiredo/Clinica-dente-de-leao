@@ -6,7 +6,7 @@
 
 {% if user.is_authenticated %}
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-2">
         <div class="list-group">
             <a href="#" class="list-group-item">Minha Conta</a>
@@ -27,26 +27,22 @@
             {% endif %}
         </div>
     </div>
-    <div class="col-md-10 rounded">
-        {% block index_conteudo %}
-        <p>Bem vindo, {{ user }} </p>
-        {% endblock %}
-    </div>
+</div> -->
+
+<div class="row">
+    <h1>Bem-Vindo, {{ user }}</h1>
 </div>
 {% else %}
 <div id="nao-logado">
     <main>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-                </svg>
+                <img class="index-img" src="https://images.adsttc.com/media/images/627a/75f3/7f4d/9601/651d/aa7e/medium_jpg/154-hr-11a-dentist-amsterdam-waitingroom-reception-rooms-i29.jpg?1652192764" alt="">
                 <div class="container">
-                    <div class="carousel-caption text-start">
+                    <div class="carousel-caption text-start bg-success bg-opacity-50 p-2 rounded">
                         <h1>Bem-Vindo a Clinica Odontologica Dente de Leão.</h1>
                         <p class="opacity-75">Faça seu cadastro para poder usufruir dos nossos serviços.</p>
-                        <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:singup' %}">Cadastre-se!</a>
+                        <p><a class="btn btn-lg btn-success" href="{% url 'accounts:singup' %}">Cadastre-se!</a>
                         </p>
                     </div>
                 </div>

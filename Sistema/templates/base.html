@@ -127,8 +127,7 @@
   </nav> -->
   <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#"><img class='navbar-logo' src="{% static 'images/logo_clinica_2.png' %}"> Dente de
-        Leão </a>
+      <a class="navbar-brand" href="{% url 'index'%}"><img class='navbar-logo' src="{% static 'images/logo_clinica_original.png' %}"> Dente de Leão </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle">
         <span class="navbar-toggler-icon"></span>
@@ -137,7 +136,20 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            {% else %}
+            <a class="nav-link" href="{% url 'clientes:consulta_lista'%}">Consultas</a>
+          </li>
+          {% if user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'funcionarios:agenda_lista'%}">Agendas</a>
+          </li>
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'funcionarios:medico_lista'%}">Medicos</a>
+          </li>
+          {% endif %}
+          {% endif %}
+          {% else %}
+          <li class="nav-item">
             <a class="nav-link" href="#1">Serviços</a>
           </li>
           <li class="nav-item">
@@ -151,21 +163,38 @@
         <hr class="border">
         <span>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+          <li class="nav-item d-flex align-items-center p-2">
+            <a class="link-light link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover "
+              href="admin/">Administração</a>
+          </li>
+          {% endif %}
+          <li class="nav-item d-flex align-items-center p-2">
+            <a class="link-light link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover "
+              href="{% url 'accounts:index' %}">Minha Conta</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="btn btn-outline-danger" href="{% url 'accounts:logout' %}">Sair</a>
+          </li>
+          {% else %}
             <li class="nav-item d-flex align-items-center p-2">
               <a class="link-light link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover "
                 href="{% url 'accounts:login' %}">Entrar</a>
             </li>
             <li class="nav-item p-2">
-              <a class="btn btn-outline-primary" href="{% url 'accounts:singup' %}">Cadastre-se</a>
+              <a class="btn btn-outline-success" href="{% url 'accounts:singup' %}">Cadastre-se</a>
             </li>
+          {% endif %}
           </ul>
         </span>
       </div>
     </div>
   </nav>
   {% endblock %}
-
-  {% block conteudo %}{% endblock %}
+  <div class="container">
+    {% block conteudo %}{% endblock %}
+  </div>
 
 
   {% block footer %}
