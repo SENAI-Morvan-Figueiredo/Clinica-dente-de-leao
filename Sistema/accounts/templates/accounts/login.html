@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block titulo %}
+Entrar | {{ block.super }}
+{% endblock %}
+
+
+{% block conteudo %}
+<div class="container login-base margin-top bg-light border rounded-2 border-dark">
+    <div class="row">
+        <div class="container login-container d-flex justfy-content-center flex-flow-column">
+            <div class="page-header d-flex justify-content-center">
+                <h1>Entrar</h1>
+                {% for error in form.non_field_errors %}
+                <div class='alert alert-danger'>
+                    {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+            <form class="form-horizontal d-flex justify-content-center" method="post">
+                {% csrf_token %}    
+                <fieldset class="fieldset-login">
+                    <div class="form-group margin-top {% if form.username.errors %} has-error {% endif %}">
+                        <label for="{{ form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label_tag }}</label>
+                        <div class="col-md-9 form-imput">
+                            {% render_field form.username class='form-control' placeholder='Usuário'%}
+                            {% for error in form.username.errors %}
+                            <span class='help-block'>{{error}}</span>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+                        <label for="{{form.password.auto_id}}id_email" class="col-md-3 control-label">{{ form.password.label_tag }}</label>
+                        <div class="col-md-9 form-imput">
+                            {% render_field form.password class="form-control" placeholder="Senha" %}
+                            {% for error in form.password.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3 d-flex flex-flow-column form-imput py-2">
+                            <span>Não é cadastrado? <a href="{% url 'accounts:singup'%}">Clique aqui</a></span>
+                            <button type="submit" class="btn btn-success maxw-20">Enviar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% comment %} <div class="main-login">
+
+    <!--------------------------/Card Sobreposto do Login/-------------------------->
+    <div class="right-login">
+        <!--------------------------/Imagem e Titulo do Login/-------------------------->
+        <div class="left-login">
+            <h1>Faça login e descubra o que podemos fazer por você</h1>
+        </div>
+        <div class="card-login">
+            <h1>LOGIN</h1>
+            <!--/E-mail/-->
+            <form class="textfield" method="post">
+                {% csrf_token %}
+
+                <label for="email">E-mail / Usuário</label>
+                {% render_field form.username id="email" placeholder='Usuário' %}
+                {% for error in form.username.errors %}
+                <span class='help-block'>{{error}}</span>
+                {%endfor%}
+
+                <!--/Senha/-->
+                <label for="senha">Senha</label>
+                {% render_field form.password id="senha" placeholder="Senha" %}
+                {% for error in form.password.errors %}
+                <span class="help-block">{{ error }}</span>
+                {% endfor %}
+                <div>
+                    <!------------------------------/Esqueceu a Senha/------------------------------>
+                    <div class="Esqueceu-Senha">
+                        <a href="#" class="esqueceu-a-senha">Esqueceu a
+                            senha?</a>
+                    </div>
+                    <div class="cadastro1">
+                        <p>Não tem cadastro?</p>
+                        <div class="cadastro2">
+                            <a href="{% url 'accounts:singup' %}">Clique aqui</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-login-conteiner">
+                    <!--------------------------------/Botão Login/--------------------------------->
+
+                    <button type="submit" class="bnt-login">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+{% block navbar %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% endblock %}

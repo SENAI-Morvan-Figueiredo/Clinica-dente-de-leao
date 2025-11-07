@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+{% load widget_tweaks %}
+
+{% block title %}
+Lista de Agendas
+{% endblock %}
+
+{% block conteudo %}
+
+    <div class="d-flex justify-content-between p-2">
+        <h2>Agendas Disponiveis</h2>
+        <a class="btn btn-outline-secondary" href="{% url 'funcionarios:agenda_cadastro'%}">Criar nova agenda</a></span>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Medico</th>
+                <th>Dia</th>
+                <th>Horario</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consulta in object_list %}
+            <tr>
+                <td><a href=""># {{ consulta.pk }}</a></td>
+                <td>{{ consulta.medico }}</td>
+                <td>{{ consulta.dia|date:"d/m/Y" }}</td>
+                <td>{{ consulta.get_horario_display }}</td>
+                <td>
+                    <a href="{% url 'medicos:agendar_consulta_atualizar' consulta.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'medicos:agendar_consulta_deletar' consulta.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

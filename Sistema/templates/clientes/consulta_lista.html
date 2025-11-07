@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+{% load widget_tweaks %}
+
+{% block title %}
+Consultas
+{% endblock %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between p-2">
+    <h2>Lista de Consultas</h2>
+    <a class="btn btn-outline-secondary" href="{% url 'clientes:consulta_cadastro'%}">Cadastrar Nova Consulta</a></span>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Medico</th>
+      <th>Dia</th>
+      <th>Horario</th>
+      {% if user.is_staff or user.is_superuser %}
+      <th>Paciente</th>
+      {% endif %}
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for consulta in object_list %}
+    <tr>
+      <th><a href=""># {{ cliente.pk }}</a></td>
+      <td>{{ consulta.agenda.medico }}</td>
+      <td>{{ consulta.agenda.dia|date:"d/m/Y" }}</td>
+      <td>{{ consulta.agenda.get_horario_display }}</td>
+      {% if user.is_staff or user.is_superuser %}
+      <td>{{ consulta.cliente }}</td>
+      {% endif %}
+      <td>
+        <a href="{% url 'clientes:consulta_update'%}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+            <i class="fas fa-edit"></i>
+        </a>
+        <a href="{% url 'clientes:consulta_delete'%}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block title %}
+Medicos
+{% endblock %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between p-2">
+    <h2>Lista de Medicos</h2>
+    <a class="btn btn-outline-secondary" href="{% url 'funcionarios:medico_cadastro'%}">Cadastrar Medico</a></span>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>CRM</th>
+            <th>Especialidade</th>
+            {% if user.is_staff or user.is_superuser %}
+            <th>ID Funcionario</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for medico in object_list %}
+        <tr>
+            <th><a href=""># {{ medico.pk }}</a></th>
+            <td>{{ medico.funcionario.user.name }}</td>
+            <td>{{ medico.funcionario.user.last_name }}</td>
+            <td>{{ medico.crm }}</td>
+            <td>{{ medico.especialidade }}</td>
+            <td>{{ medico.telefone }}</td>
+            {% if user.is_staff or user.is_superuser %}
+            <td>{{ medico.funcionario }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

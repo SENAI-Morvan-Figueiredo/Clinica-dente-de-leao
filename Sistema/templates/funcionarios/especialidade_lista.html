@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Medicos
+{% endblock %}
+
+{% block conteudo %}
+
+    <div class="d-flex justify-content-between p-2">
+        <h2>Lista de Medicos</h2>
+        <a class="btn btn-outline-secondary" href="{% url 'funcionarios:especialidade_cadastro'%}">Cadastrar Especialidade</a></span>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Especialidade</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for especialidade in object_list %}
+            <tr>
+                <th><a href=""># {{ especialidade.pk }}</a></th>
+                <td>{{ especialidade.especialidade }}</td>
+                <td>{{ especialidade.descrição }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Funcionarios
+{% endblock %}
+
+{% block conteudo %}
+<<div class="d-flex justify-content-between p-2">
+    <h2>Lista de Funcionarios</h2>
+    <a class="btn btn-outline-secondary" href="{% url 'funcionarios:funcionario_cadastro'%}">Cadastrar Funcionario</a></span>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>E-mail</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Genero</th>
+            <th>CEP</th>
+            <th>Data De Nacimento</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for funcionario in object_list %}
+        <tr>
+            <th><a href=""># {{ funcionario.pk }}</a></th>
+            <td>{{ funcionario.user.name }}</td>
+            <td>{{ funcionario.user.last_name }}</td>
+            <td>{{ funcionario.email }}</td> 
+            <td>{{ funcionario.cpf }}</td>
+            <td>{{ funcionario.telefone }}</td>
+            <td>{{ funcionario.genero }}</td>
+            <td>{{ funcionario.cep }}</td>
+            <td>{{ funcionario.data_nacimento }}</td>
+            <td>{{ funcionario.is_ativo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

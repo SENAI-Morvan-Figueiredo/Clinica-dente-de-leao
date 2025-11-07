@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{% load widget_tweaks %}
+
+{% block title %}
+Lista de Clientes
+{% endblock %}
+
+{% block conteudo %}
+<h2>lista dos Clientes </h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>CPF</th>
+      <th>E-mail</th>
+      <th>Telefone</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cliente in object_list %}
+    <tr>
+      <th><a href=""># {{ cliente.pk }}</a></td>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.sobrenome }}</td>
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.user.email }}</td>
+      <td>{{ cliente.telefone }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

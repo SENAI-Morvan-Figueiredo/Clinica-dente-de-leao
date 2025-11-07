@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}
+Minha Conta | {{ block.super }}
+{% endblock%}
+
+{% block conteudo %}
+<div class="container">
+    <div class="list-group">
+        <ul>
+            <li class="list-item"><a href="{% url 'accounts:index'%}">Minha Conta</a></li>
+            <li class="list-item"><a href="{% url 'accounts:update_user'%}">Alterar Nome e Email</a></li>
+            <li class="list-item"><a href="{% url 'accounts:update_password'%}">Alterar Senha</a></li>
+            <li class="list-item"><a href="{% url 'clientes:cliente_atualizar'%}"> Dados Complementares </a></li>
+            <li class="list-item"><a href="{% url 'accounts:logout' %}">Sair</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        {% block conta_conteudo %}
+        <h1>Bem vindo, {{ user }} </h1>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
